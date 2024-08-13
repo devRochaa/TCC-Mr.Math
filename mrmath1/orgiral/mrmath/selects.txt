@@ -1,3 +1,0 @@
-select e.id, e.enunciado from exercicios as e;
-
-SELECT e.id, a.conteudo FROM exercicios as e INNER JOIN alternativas as a on a.id_questao = e.id;
