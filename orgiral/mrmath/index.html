@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Registro</title>
+</head>
+
+<body>
+
+  <div class="main-login">
+    <div class="left-login">
+      <h1> Faça o seu cadastro<br>E se junte ao nosso curso</h1>
+      <img src="calcanimation.svg" class="left-login-image" alt="calculadora animação">
+    </div>
+    <div class="right-login">
+      <div class="card-login">
+        <h1>CADASTRO</h1>
+        <form action="cadastro.php" method="POST">
+          <div class="textfield">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" maxlength="120" placeholder="Seu nome " required>
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" name="sobrenome" maxlength="120" placeholder="Seu sobrenome " required>
+            <label for="email">Email:</label>
+            <input type="email" name="email" maxlength="120" placeholder="Sua e-mail" required>
+          </div>
+          <div class="textfield">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" minlength="8" maxlength="32" placeholder="Sua senha" required>
+          </div>
+          <button type="submit" class="btn-login">CADASTRE-SE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
