@@ -190,8 +190,8 @@
         background-color:#B6C5EA;
     }
 
-    .porcentagem-aula {
-        width: 40%;
+    #porcentagem-aula {
+        width: 0%;
         height: 50px;
         border-radius: 50px;
         background-color:#1E38E6;
@@ -224,7 +224,7 @@
         
     }
 
-    .porcentagem-questoes {
+    #porcentagem-questoes {
         width: 60%;
         height: 50px;
         border-radius: 50px;

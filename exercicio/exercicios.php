@@ -18,6 +18,7 @@ ob_start();
     <?php
     include("../seguranca.php");
     include("../navbar.php");
+
     ?>
 
     <div class="container">

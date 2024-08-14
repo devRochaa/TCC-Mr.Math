@@ -35,9 +35,21 @@ ob_start();
         }
     }
     $_SESSION['nome'] = $nome;
-    mysqli_close($conexao);
 
+    $sql = "SELECT id from usuarios where email = '$logado'";
+    $result = $conexao->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+    }
+
+    $sql = "SELECT aulas_assistidas, ex_feitos FROM desempenho where id_usuarios = $id";
+    $result = $conexao->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $aulas_assistidas = $row['aulas_assistidas'];
+        $ex_feitos = $row['ex_feitos'];
+    }
     include("navbarH.php")
+
     ?>
 
     <div class="container">
@@ -50,39 +62,45 @@ ob_start();
             <div class="box-aulas">
                 <div class="barra-aulas">
                     <h2>Matematica Basica</h2>
-                    <div class="porcentagem-aula">
-                        <h3>25%</h3>
+                    <div id="porcentagem-aula">
+                        <h3 id="porcentagem-aula-text"></h3>
                     </div>
                 </div>
             </div>
             <div class="box-questoes">
                 <div class="barra-questoes">
                     <h2>Matematica Basica</h2>
-                    <div class="porcentagem-questoes">
-                        <h3>55%</h3>
+                    <div id="porcentagem-questoes">
+                        <h3 id="porcentagem-questoes-text"></h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    
-    <div id="barra-container">
-    <div id="barra-progresso"></div>
-    </div>
-    <p id="porcentagem-texto">0%</p>
+
 
     <script>
-        function atualizarBarra(percentual) {
-    var barraProgresso = document.getElementById("barra-progresso");
-    var textoPorcentagem = document.getElementById("porcentagem-texto");
-    
-    barraProgresso.style.width = percentual + "%";
-    textoPorcentagem.innerText = percentual + "%";
-}
+        var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
+        var ex_feitos = "<?php echo $ex_feitos; ?>";
 
-    // Exemplo de uso: Atualizar a barra para 70%
-    atualizarBarra(80);
+        var aulas_porcentagem = (aulas_assistidas / 10) * 100;
+        var ex_porcentagem = (ex_feitos / 50) * 100;
+
+        function atualizarBarra(percentualA, percentualQ) {
+            var barraProgressoAula = document.getElementById("porcentagem-aula");
+            var textoPorcentagemAula = document.getElementById("porcentagem-aula-text");
+            var barraProgressoQuestoes = document.getElementById("porcentagem-questoes");
+            var textoPorcentagemQuestoes = document.getElementById("porcentagem-questoes-text");
+
+            barraProgressoAula.style.width = percentualA + "%";
+            textoPorcentagemAula.innerText = percentualA + "%";
+            barraProgressoQuestoes.style.width = percentualQ + "%";
+            textoPorcentagemQuestoes.innerText = percentualQ + "%";
+        }
+        atualizarBarra(aulas_porcentagem, ex_porcentagem);
+
+        // Exemplo de uso: Atualizar a barra para 70%
     </script>
 </body>
 
