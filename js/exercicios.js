@@ -1,9 +1,11 @@
 const $startGameButton = document.querySelector(".start-quiz")
+const $nextQuestionButton = document.querySelector(".next-quiz")
 const $container = document.querySelector(".cima")
 const $questionsContainer = document.querySelector(".question-containerr")
 const $answersContainer = document.querySelector(".answers-containerr")
 const $questionText = document.querySelector(".question")
-const $nextQuestionButton = document.querySelector(".next-quiz")
+const $cardQuestion = document.querySelector(".features")
+
 
 
 $startGameButton.addEventListener("click", startGame)
@@ -14,10 +16,10 @@ let totalCorrect = 0
 
 function startGame() {
   $startGameButton.classList.add("hide")
+  $cardQuestion.classList.add("hide")
   $questionsContainer.classList.remove("hide")
   $container.classList.add("hide")
   displayNextQuestion()
-
 }
 
 
@@ -52,32 +54,35 @@ function resetState() {
 }
 
 function selectAnswer(event) {
-  const answerClicked = event.target
+  const answerClicked = event.target;
+  const isCorrect = answerClicked.dataset.correct;
 
-  if (answerClicked.dataset.correct) {
-    document.body.classList.add("correct")
-    totalCorrect++
+  // Remove classes from all buttons
+  document.querySelectorAll(".answer").forEach(button => {
+    button.classList.remove("correct", "incorrect");
+    button.disabled = true;  // Disable all buttons after a selection
+  });
 
+  // Add correct/incorrect class based on the clicked answer
+  if (isCorrect) {
+    answerClicked.classList.add("correct");
+    totalCorrect++;
   } else {
-    document.body.classList.add("incorrect")
+    answerClicked.classList.add("incorrect");
+
+    // Highlight the correct answer
+    document.querySelectorAll(".answer").forEach(button => {
+      if (button.dataset.correct) {
+        button.classList.add("correct");
+      }
+    });
   }
 
-  document.querySelectorAll(".answer").forEach(button => {
-    if (button.dataset.correct) {
-      button.classList.add("correct")
-    } else {
-      button.classList.add("incorrect")
-    }
-
-
-    button.disabled = true
-
-  })
-
-
-  $nextQuestionButton.classList.remove("hide")
-  currentQuestionIndex++
+  // Show the next question button
+  $nextQuestionButton.classList.remove("hide");
+  currentQuestionIndex++;
 }
+
 
 function finishGame() {
   const totalQuestions = questions.length
@@ -102,7 +107,7 @@ function finishGame() {
   $questionsContainer.innerHTML =
     `
   <p class="final-message">
-   Você acertou ${totalCorrect} de ${totalQuestions} questões!
+    Você acertou ${totalCorrect} de ${totalQuestions} questões!
     <span>Resultado: ${message}</span>
   </p>
   <button 

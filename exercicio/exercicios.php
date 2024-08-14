@@ -39,8 +39,48 @@ ob_start();
                     <button class="answer button">d</button>
                 </div>
             </div>
-            <div class="controls-containerr">
-                <div class="start-quiz button">Comecar</div>
+
+            <div class="features">
+                <div class="cards">
+                    <div class="card">
+                        <h4>Exercícios Soma e subtracao</h4>
+                        <p>
+                            7 exercicios sobre soma e subtracao para seu estudo
+                        </p>
+                        <div class="controls-start">
+                            <div class="start-quiz button">Comecar</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Exercícios Divisao e multiplicaçãoS</h4>
+                        <p>
+                            7 exercicios sobre divisao e multiplicação para seu estudo
+                        </p>
+                        <div class="controls-start">
+                            <div class="start-quiz button">Comecar</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Exercícios Fracao e Equacao</h4>
+                        <p>
+                            7 exercicios tendo fracoes e equacoes para seu estudos
+                        </p>
+                        <div class="controls-start">
+                            <div class="start-quiz button">Comecar</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Exercícios graficos</h4>
+                        <p>
+                            7 exercicios com graficos para seu estudos
+                        </p>
+                        <div class="controls-start">
+                            <div class="start-quiz button">Comecar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls-next">
                 <div class="next-quiz button hide">></div>
             </div>
         </div>
