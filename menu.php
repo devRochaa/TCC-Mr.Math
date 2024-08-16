@@ -18,11 +18,11 @@ ob_start();
 <body>
     <?php
     session_start();
-    include("conexao.php");
-    if (!isset($_SESSION["usuario"]) ==  true) {
-        unset($_SESSION["usuario"]);
-        header("../login/inicio.php");
+    if (!isset($_SESSION["usuario"])) {
+        header("location: index.html");
+        exit();
     }
+    include("conexao.php");
 
     $logado = $_SESSION["usuario"];
 
@@ -57,7 +57,7 @@ ob_start();
             <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
             <hr>
             <div class="banner">
-                <img class="banner_img" src="img/bannerMenu.png">
+                <img class="banner_img" src="img/banner7.png">
             </div>
             <div class="box-aulas">
                 <div class="barra-aulas">
