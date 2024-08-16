@@ -163,7 +163,7 @@
     }
     .banner{
         width: 100%;
-        height: 250px;
+        height: 250vh;
         margin: 20px auto;
         border-radius: 10px;
         background-color: #1E38E6;
@@ -212,7 +212,7 @@
         font-size: 20px;
         font-weight: 10;
         padding: 10px;
-        float: right;
+    float: right;
     }
     .barra-questoes{
         width: 60%;
@@ -244,9 +244,9 @@
     }
 
     .banner_img {
-        
-        
-        border-radius: 5px;
+        width: 100%;
+        height: 250vh;
+        border-radius: 8px;
     }
 
     #barra-container {
