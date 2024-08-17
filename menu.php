@@ -57,7 +57,7 @@ ob_start();
             <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
             <hr>
             <div class="banner">
-                <img class="banner_img" src="img/bannerMenu.png">
+                <img class="banner_img" src="img/banner_inicial.png">
             </div>
             <div class="box-aulas">
                 <div class="barra-aulas">

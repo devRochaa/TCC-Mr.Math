@@ -151,4 +151,27 @@ input:checked ~ .slide {
   'GRAD' 0,
   'opsz' 48
   }
+
+  .container{
+    width: 100%;
+    height: auto;
+}
+
+.corpo{
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+}
+
+.logo{
+    height: 10px;
+    width: auto;
+    margin-left:20px;
+}
+
+.logo_img{
+    height: 60px;
+    width: auto;
+    margin-top: -23px;
+}
   

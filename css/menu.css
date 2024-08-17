@@ -163,7 +163,7 @@
     }
     .banner{
         width: 100%;
-        height: 250vh;
+        height: 40vh;
         margin: 20px auto;
         border-radius: 10px;
         background-color: #1E38E6;
@@ -245,7 +245,7 @@
 
     .banner_img {
         width: 100%;
-        height: 250vh;
+        height: 40vh;
         border-radius: 8px;
     }
 
