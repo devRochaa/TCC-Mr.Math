@@ -53,7 +53,7 @@ ul li a i{
     text-align: center;
 }
 
-input{
+.nave{
     display: none;
     visibility: hidden;
     -webkit-appearance:none ;

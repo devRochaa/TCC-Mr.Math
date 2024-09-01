@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adicionar Vídeos</title>
-  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/navbar.css?=<?php echo time(); ?>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -15,6 +15,10 @@
   session_start();
   include("../navbar.php");
   include("../conexao.php");
+  if ($_SESSION['VideoEnviado'] == true) {
+    echo "<script> window.alert('Vídeo Enviado');</script>";
+    $_SESSION['VideoEnviado'] = false;
+  }
   //aparecer as materias existentes no input 
   $sql = "SELECT nome from materia";
   $result = mysqli_query($conexao, $sql);
@@ -47,8 +51,8 @@
       <input type="text" name="descricao" maxlength="200" placeholder="matemática...">
       <br>
       <br>
-      <label for="materia">Envie o vídeo:</label>
-      <input type="file" name="arquivo" required>
+      <label for="link">Envie o vídeo:</label>
+      <input type="text" name="link" minlength="30" maxlength="43" required>
       <br>
       <br>
       <button type="submit" name="enviar">Envie o vídeo</button>
