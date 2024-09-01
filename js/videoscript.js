@@ -1,45 +1,65 @@
-import videos from "./video.js";
+const videosList = [
+  {
+    video: 'images/vid-9.mp4',
+    title: '3D helicopter animation'
+  },
+  {
+    video: 'images/vid-3.mp4',
+    title: 'emoji falling animation'
+  },
+  {
+    video: 'images/vid-1.mp4',
+    title: 'house flood animation'
+  },
+  {
+    video: 'images/vid-2.mp4',
+    title: 'zoombie walking animation'
+  },
+  {
+    video: 'images/vid-4.mp4',
+    title: '3D town animation'
+  },
+  {
+    video: 'images/vid-5.mp4',
+    title: 'man chasing carrot animation'
+  },
+  {
+    video: 'images/vid-6.mp4',
+    title: 'door hinge animation'
+  },
+  {
+    video: 'images/vid-7.mp4',
+    title: 'poeple walking in town animation'
+  },
+  {
+    video: 'images/vid-8.mp4',
+    title: 'knight chasing virus animation'
+  },
+]
 
-function loadVideos() {
-  const playlist_area = document.querySelector(".playlist");
 
-  videos.forEach((video, index) => {
-    const div = document.createElement("div");
+const categories = [...new Set(videosList.map((item) => { return item }))]
+document.getElementById('videosList').innerHTML = categories.map((item) => {
+  var { video, title } = item;
+  return (
+    `<div class="list active">
+      <video src=${video} class="list-video"></video>
+      <h3 class="list-title">${title}</h3>
+      </div>`
+  )
+}).join('')
 
-    div.innerHTML = `
-      <div class="playlist-video ${index + 1 === 1 && "active"}">
-        <video src=${video.src} muted></video>
-        <label class="playlist-video-info">${video.title}</label>
-      </div>
-    `;
 
-    playlist_area.appendChild(div);
-  });
-
-  addOnClick();
-}
-
-function addOnClick() {
-  const video_main = document.querySelector(".main-video-content");
-  const playlist_video = document.querySelectorAll(".playlist-video");
-
-  playlist_video.forEach((item, i) => {
-    if (!i) {
-      setVideo(video_main, item);
-    }
-
-    item.onclick = () => {
-      playlist_video.forEach((video) => video.classList.remove("active"));
-      item.classList.add("active");
-
-      setVideo(video_main, item);
-    };
-  });
-}
-
-function setVideo(video_main, item) {
-  video_main.children[0].src = item.children[0].getAttribute("src");
-  video_main.children[1].innerHTML = item.children[1].innerHTML;
-}
-
-loadVideos();
+let videoList = document.querySelectorAll('.video-list-container .list');
+videoList.forEach(remove => { remove.classList.remove('active') });
+videoList.forEach(vid => {
+  vid.onclick = () => {
+    videoList.forEach(remove => { remove.classList.remove('active') });
+    vid.classList.add('active');
+    let src = vid.querySelector('.list-video').src;
+    let title = vid.querySelector('.list-title').innerHTML;
+    document.querySelector('.main-video-container .main-video').src = src;
+    document.querySelector('.main-video-container .main-video').play();
+    document.querySelector('.main-video-container .main-vid-title').innerHTML = title;
+  };
+});
