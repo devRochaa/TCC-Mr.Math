@@ -30,12 +30,12 @@
   ?>
   <div class=" container">
     <div class="main-video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe id='iframe' width="560" height="315" src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <h3 class="main-vid-title">3D helicopter animation</h3>
     </div>
     <div class="video-list-container" id="videosList">
       <?php foreach ($videos as $video) {
-        echo "<a onclick=trocarvideo()> <img height='90vw' src='../img/banner7.png'>
+        echo "<a id='", $video['link'],  "' onclick='trocarvideo()'> <img height='90vw' src='../img/banner7.png'>
        <p> ", $video['titulo'], "</p></a>";
       } ?>
 
@@ -43,9 +43,11 @@
     </div>
   </div>
 
-  <script src="Videoplaylist.js">
+  <script src=" ">
     function trocarvideo() {
-
+      codigo = document.getElementById("code");
+      console.log(codigo);
+      document.getElementById("iframe").src = 'https://www.youtube.com/embed/', codigo;
     }
   </script>
 
