@@ -15,9 +15,9 @@
   session_start();
   include("../navbar.php");
   include("../conexao.php");
-  if ($_SESSION['VideoEnviado'] == true) {
+  if (isset($_SESSION['VideoEnviado'])) {
     echo "<script> window.alert('Vídeo Enviado');</script>";
-    $_SESSION['VideoEnviado'] = false;
+    unset($_SESSION["VideoEnviado"]);
   }
   //aparecer as materias existentes no input 
   $sql = "SELECT nome from materia";
