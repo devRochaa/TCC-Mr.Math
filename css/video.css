@@ -269,3 +269,19 @@ body {
 		text-align: center;
 	}
 }
+
+.cards {
+    display: inline-block;
+    background-color: #143699;   
+    width: 15vw;
+    margin: 1vw;
+    padding-top: 0.5vw;
+    padding-left: 0.5vw;
+    justify-content: center;
+    color: #eee;
+}
+
+.btn-videos{
+    width: 10vw;
+}
+
