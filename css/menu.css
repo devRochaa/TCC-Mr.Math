@@ -1,16 +1,16 @@
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
 
-    *{
-        margin: 0;
+*{
+    margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
-
+    
     body{
         background-color: white;
     }
-
+    
     .slide{
         height: 100%;
         width: 275px;
@@ -18,8 +18,9 @@
         background-color: #1E38E6;
         transition: 0.5s ease;
         transform: translateX(-275px);
+        z-index: 3;
     }
-
+    
     h1 {
         color: white;
         font-weight: 800;
@@ -32,7 +33,7 @@
     ul li{
         list-style: none;
     }
-
+    
     ul li a{
         color: white;
         font-weight: 500;
@@ -42,23 +43,23 @@
         text-decoration: none;
         transition: 0.2s ease-out;
     }
-
+    
     ul li:hover a.burguer{
         color: #143699;
         background-color: white;
     }
-
+    
     ul li a i{
         width: 40px;
         text-align: center;
     }
-
+    
     input{
         display: none;
         visibility: hidden;
         -webkit-appearance:none ;
     }
-
+    
     .toggle {
         position: absolute;
         height: 30px;
@@ -71,7 +72,7 @@
         background-color: transparent;
         
     }
-
+    
     .toggle .common {
         position: absolute;
         height: 2px;
@@ -80,19 +81,19 @@
         border-radius: 50px;
         transition: 0.3 ease;
     }
-
+    
     .toggle .top_line {
         top: 10%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
+    
     .toggle .middle_line {
         top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
+    
     .toggle .bottom_line {
         top: 50%;
         left: 50%;
@@ -105,52 +106,45 @@
         width: 25px;
         transform: rotate(45deg);
     }
-
+    
     input:checked ~ .toggle .middle_line {
         left: 2px;
         top: 13px;
         width: 25px;
         transform: rotate(-45deg);
     }
-
+    
     input:checked ~ .toggle .bottom_line{
         opacity: 0;
         transform: translateX(20px);
     }
-
+    
     input:checked ~ .slide {
         transform: translateX(0);
         box-shadow: 0 0 15px rgba(0 , 0, 0, 0.5);
     }
-
-    .navbar {
-        
+    
+    .navbar {        
         margin: 0;
-        padding: 25px;
+        padding: 3vh;
         width: 100%;
         background-color: #1E38E6;
         box-shadow: 0 0 15px rgba(0 , 0, 0, 0.5);
     }
     
-   #logo {
-        width: 50px;
-        height: auto;
-        margin-top: -20px;
-        margin-left: 20px;
-    }
 
     #link {
         margin-top: -17px;   
         float: right;
     }
-
-
+    
+    
     .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 600,
-    'GRAD' 0,
-    'opsz' 48
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 48
     }
     .container{
         width: 100%;
@@ -161,17 +155,11 @@
         height: auto;
         margin: 20px auto;
     }
-    .banner{
-        width: 100%;
-        height: 40vh;
-        margin: 20px auto;
-        border-radius: 10px;
-        background-color: #1E38E6;
-    }
+    
     .box-aulas{
         width: 50%;
         height: 200px;
-        border-right: 2px #ccc solid;
+        
         
         float: left;
     }
@@ -180,63 +168,65 @@
         height: 200px;
         float: right;
     }
-
-    .barra-aulas{
-        width: 60%;
-        height: 50px;
-        margin-top: 100px;
-        margin-left: 80px;
-        border-radius: 50px;
-        background-color:#B6C5EA;
-    }
-
-    #porcentagem-aula {
-        width: 0%;
-        height: 50px;
-        border-radius: 50px;
-        background-color:#1E38E6;
-    }
-
-
-
-    h3 {
-        color: white;
-        font-weight: 10;
-        padding: 10px;
-        margin-left: 30px;
     
+    .barra-aulas, .barra-questoes {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Isso garante que o conteúdo seja distribuído */
+        width: 99%;
+        height: 10vh;
+        margin-top: 5%;      
+        border-radius: 10px;
+        background-color: #7e88a2;
+        position: relative;
+        overflow: hidden;
     }
 
-    h2 {
+    #porcentagem-aula, #porcentagem-questoes {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 10vh;
+        border-radius: 10px;
+        background-color: #1E38E6;
+        width: 0%; /* Defina a largura dinamicamente */
+        padding-left: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    #porcentagem-aula-text, #porcentagem-questoes-text {
         color: white;
+        font-weight: 15;
+        z-index: 1; /* Para que o texto esteja sobre a barra */
+        padding-left: 10px;
+    }
+    
+    #porcentagem-aula-text {
+        margin-left: 10%;
+    }
+    
+    #porcentagem-questoes-text {
+        margin-left: 10%;
+    }
+    
+    h2 {
+        color: rgb(255, 255, 255);
         font-size: 20px;
-        font-weight: 10;
-        padding: 10px;
-    float: right;
+        font-weight: 15;
+        padding-right: 5px; /* Ajuste o espaçamento à direita */
+        margin: 35%;
+        z-index: 2; /* Para que o texto esteja sobre a barra */
+        white-space: nowrap;
     }
-    .barra-questoes{
-        width: 60%;
-        height: 50px;
-        margin-top: 100px;
-        margin-left: 100px;
-        border-radius: 50px;
-        background-color:#B6C5EA;
-        
-    }
-
-    #porcentagem-questoes {
-        width: 60%;
-        height: 50px;
-        border-radius: 50px;
-        background-color:#1E38E6;
-    }
-
+    
     .logo{
         height: 10px;
         width: auto;
         margin-left:20px;
     }
-
+    
     .logo_img{
         height: 60px;
         width: auto;
@@ -248,28 +238,75 @@
         height: 40vh;
         border-radius: 8px;
     }
-
-    #barra-container {
+    .banner{
         width: 100%;
-        background-color: #e0e0e0;
-        border-radius: 25px;
-        overflow: hidden;
-    }
-    
-    #barra-progresso {
-        width: 0%;
-        height: 30px;
+        height: 40vh;
+        margin: 20px auto;
+        border-radius: 10px;
         background-color: #1E38E6;
-        border-radius: 25px;
-        text-align: center;
-        line-height: 30px; /* Para centralizar o texto verticalmente */
-        color: white;
-        font-weight: bold;
     }
     
-    #porcentagem-texto {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 18px;
-    }
+    @media (max-width: 768px) {
+        .corpo {
+            width: 90%;
+        }
+        
+        .box-aulas, .box-questoes {
+            width: 100%;
+            height: auto;
+            float: none;
+            margin-bottom: 20px;
+        }
+    
+        .barra-aulas, .barra-questoes {
+            width: 80%;
+            margin-left: 10%;
+        }
+        
+        .banner_img {
+            height: 20vh;
+        }
 
+        .banner {
+            height: 20vh;
+        }
+
+        #porcentagem-aula {
+            width: 60%;
+        }
+    
+        #porcentagem-questoes {
+            width: 60%;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .corpo {
+            width: 90%;
+        }
+        #porcentagem-aula, #porcentagem-questoes {
+            width: 70%;
+        }
+        .barra-aulas, .barra-questoes {
+            width: 90%;
+            margin-left: 5%;
+        }
+    
+        .toggle {
+            height: 25px;
+            width: 25px;
+        }
+    
+        h1 {
+            font-size: 24px;
+        }
+    
+        .banner {
+            height: 20vh;
+        }
+    
+        .banner_img {
+            height: 20vh;
+        }
+    }
+    

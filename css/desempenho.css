@@ -12,7 +12,7 @@ body{
 }
 
 .slide{
-    height: 100%;
+    height: 120%;
     width: 275px;
     position: absolute;
     background-color: #1E38E6;
@@ -124,7 +124,6 @@ input:checked ~ .slide {
 }
 
 .navbar {
-    
     margin: 0;
     padding: 25px;
     width: 100%;

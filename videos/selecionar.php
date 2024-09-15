@@ -15,6 +15,8 @@
   <?php
   include("../navbar.php");
   include("../conexao.php");
+
+
   ob_start();
 
   $sim = 'nao';

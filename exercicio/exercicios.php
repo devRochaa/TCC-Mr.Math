@@ -16,7 +16,6 @@ ob_start();
 
 <body>
     <?php
-    include("../seguranca.php");
     include("../navbar.php");
 
     ?>

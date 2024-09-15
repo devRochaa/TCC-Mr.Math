@@ -12,7 +12,6 @@
 
 <body>
   <?php
-  session_start();
   include("../navbar.php");
   include("../conexao.php");
   if (isset($_SESSION['VideoEnviado'])) {

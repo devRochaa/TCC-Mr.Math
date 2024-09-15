@@ -18,6 +18,7 @@ body{
     background-color: #1E38E6;
     transition: 0.5s ease;
     transform: translateX(-275px);
+    z-index: 3;
 }
 
 h1 {
