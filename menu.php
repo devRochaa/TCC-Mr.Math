@@ -17,7 +17,7 @@ ob_start();
 
 <body>
     <?php
-    session_start();
+    include("navbarH.php");
     if (!isset($_SESSION["usuario"])) {
         header("location: index.html");
         exit();
@@ -48,7 +48,6 @@ ob_start();
         $aulas_assistidas = $row['aulas_assistidas'];
         $ex_feitos = $row['ex_feitos'];
     }
-    include("navbarH.php")
 
     ?>
 

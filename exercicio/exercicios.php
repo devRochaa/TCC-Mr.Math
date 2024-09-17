@@ -10,7 +10,8 @@ ob_start();
     <title>Menu Burguer</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/exercicios.css">
+    <link rel="stylesheet" href="../css/navbar.css?=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/exercicios.css?=<?php echo time();?>">
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 

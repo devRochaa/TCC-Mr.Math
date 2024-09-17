@@ -1,4 +1,7 @@
-<?php include("admin.php"); ?>
+<?php 
+include("segurancaH.php");
+include("admin.php"); 
+?>
 <label>
   <input class="nave" type="checkbox">
   <div class="toggle">

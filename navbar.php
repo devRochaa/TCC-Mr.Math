@@ -10,8 +10,6 @@ include("admin.php");
     <span class="bottom_line common"></span>
   </div>
 
-
-
   <div class="slide">
     <h1>MENU</h1>
     <ul>
@@ -31,13 +29,13 @@ include("admin.php");
 </label>
 
 <div class="navbar">
+  <div class="logo">
+    <img class="logo_img" src="../img/logo.png">
+  </div>
   <ul>
-    <li id="link"><a href="../profile.php"><span class="material-symbols-outlined">
-          account_circle
-        </span></a> </li>
+    <li id="link"><a href="../profile.php"><span class="material-symbols-outlined">account_circle</span></a></li>
   </ul>
-  <div class="logo"><img class="logo_img" src="../img/Logo_tcc.png"></div>
 </div>
-
-
-</body>
+<script>
+  
+</script>
