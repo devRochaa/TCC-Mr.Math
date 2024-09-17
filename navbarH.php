@@ -1,14 +1,11 @@
 <?php include("admin.php"); ?>
 <label>
-
   <input class="nave" type="checkbox">
   <div class="toggle">
     <span class="top_line common"></span>
     <span class="middle_line common"></span>
     <span class="bottom_line common"></span>
   </div>
-
-
 
   <div class="slide">
     <h1>MENU</h1>
@@ -29,13 +26,10 @@
 </label>
 
 <div class="navbar">
+  <div class="logo">
+    <img class="logo_img" src="img/logo.png">
+  </div>
   <ul>
-    <li id="link"><a href="conta.php"><span class="material-symbols-outlined">
-          account_circle
-        </span></a> </li>
+    <li id="link"><a href="conta.php"><span class="material-symbols-outlined">account_circle</span></a></li>
   </ul>
-  <div class="logo"><img class="logo_img" src="img/Logo_tcc.png"></div>
 </div>
-
-
-</body>
