@@ -1,0 +1,313 @@
+    .second-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container-display{
+        display: flex;
+        justify-content:space-between;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+/*VVV INFO CONTAINER VVV */
+
+
+.info-container{
+    display: inline-flex;
+    align-items: stretch;
+    background-color: white;
+    margin-top: 1.5vw;
+    border-radius: 15px;
+    border: solid 1px rgb(224, 224, 224);
+}
+
+.imagem-container{
+    background-color: rgb(255, 255, 255);
+    border-right: solid  1px rgb(224, 224, 224);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-perfil{
+    margin: 1vw;
+    margin-top: 1.5vw;
+    width: 15vw;
+}
+
+.title{
+    font-size: 2vw;
+    color: black;
+}
+
+.edit-image-button{
+    font-size: 15px ;
+    display: flex;
+    float: right;
+    background-color: transparent;
+    border: 2px solid #143699;
+    border-radius: 10px;
+    padding: 0.85rem;
+    font-weight: 550;
+    color: #143699;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.edit-image-button:hover{
+    border-radius: 20px;
+}
+
+.edit-image-button::selection{
+    background-color: transparent;
+    color: inherit;
+}
+
+.edit-image-button:active {
+    transform: translateY(0.5vh);
+}
+
+.input-container{   
+    margin: 1vw;
+}
+
+.bio-display{
+    margin-top: 1.5vw;
+}
+
+.input-display {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: row row ;
+    gap: 1.5rem;
+}
+
+.button-display{
+    gap: 1vw;
+    justify-content: right;
+    margin-top: 1vw;
+    display: flex;
+
+}
+
+.text-input{
+    border: solid 1.75px rgb(165, 165, 165);
+    border-radius: 9px;
+    padding: 0.5vw;
+    width: 15vw;
+    font-size: 0.8vw;
+    outline: none;
+}
+
+.text-input:read-only{
+    background-color: rgb(243, 243, 243);
+    border: solid 1.75px rgb(165, 165, 165);
+    border-radius: 9px;
+    padding: 0.5vw;
+    width: 15vw;
+    font-size: 0.8vw;
+    outline: none;
+    cursor: default;
+    
+}
+
+.text-input::placeholder{
+    color: rgb(212, 212, 212);
+}
+
+.bio-input{
+    border: solid 1.75px rgb(165, 165, 165);
+    border-radius: 9px;
+    padding: 0.5vw;
+    width: 32vw;
+    padding-bottom: 5vw;
+    font-size: 0.8vw;
+    outline: none;
+}
+
+.bio-input::placeholder{
+    color: rgb(212, 212, 212);
+}
+
+.button {
+    font-size: 11px ;
+    display: flex;
+    float: right;
+    background-color: transparent;
+    border: 2px solid #143699;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #143699;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:-webkit-selection{
+    color: inherit;
+    background-color: transparent;
+}
+
+.button:active{
+    transform: translateY(0.5vh);
+}
+
+.button:hover {
+    border-radius: 20px;
+}
+
+/*VVV BOTTOM DISPLAY VVV*/
+
+.bottom-display{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 6.5vw;
+}
+
+
+/*VVV PASSWORD DISPLAY VVV*/
+
+.info-password-container{
+    display: inline-flex;
+    align-items: stretch;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 1px rgb(224, 224, 224);
+}
+
+.input-password-display{
+    margin-top: 0.5vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: row row ;
+    gap: 1.5rem;
+}
+
+.button-password-display{
+    margin-top: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
+}
+
+.text-password-input{
+    border: solid 1.75px rgb(165, 165, 165);
+    border-radius: 9px;
+    padding: 0.7vw;
+    width: 20vw;
+    font-size: 0.8vw;
+    outline: none;
+    display: block;
+    
+}
+
+.icon{
+    position: absolute;
+    right: 35px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgb(156, 156, 156);
+    transition:  ease 0.25s ;
+}
+
+.icon:hover{
+    color: rgb(0, 0, 0);
+}
+
+.input-structure{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link{
+    top: 30px;
+    font-size: 0.9vw;
+    color: #143699;
+}
+
+/* DELETE INFO CONTAINER */
+
+.delete-info-container{
+    display: inline-flex;
+    align-items: stretch;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 1px rgb(224, 224, 224);
+}
+
+.checkbox-display{
+    margin-top: 0.5rem;
+    display:flex;
+    flex-direction: column;
+}
+
+.delete-display{
+    gap: 1rem;
+}
+
+.delete-confirm-structure{
+    margin-top:1vw ;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-input{
+    border: solid 1.75px rgb(165, 165, 165);
+    border-radius: 9px;
+    padding: 0.75vw;
+    width: 20vw;
+    font-size: 0.8vw;
+    outline: none;
+    font-size: 15px;
+}
+
+.delete-input::placeholder{
+    color: rgb(212, 212, 212);
+}
+
+.checkbox-input{
+    accent-color: #143699;
+    cursor: pointer;
+}
+
+.delete-button {
+    font-size: 11px ;
+    display: flex;
+    float: right;
+    background-color: transparent;
+    border: 2px solid #d81414;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #d81414;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:-webkit-selection{
+    color: inherit;
+    background-color: transparent;
+}
+
+.delete-button:active{
+    transform: translateY(0.5vh);
+}
+
+.delete-button:hover {
+    background-color: #d81414;
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.checkbox-form-button-display{
+    margin-top: 2.40rem;
+}

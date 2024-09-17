@@ -30,6 +30,6 @@
     <img class="logo_img" src="img/logo.png">
   </div>
   <ul>
-    <li id="link"><a href="conta.php"><span class="material-symbols-outlined">account_circle</span></a></li>
+    <li id="link"><a href="profile.php"><span class="material-symbols-outlined">account_circle</span></a></li>
   </ul>
 </div>

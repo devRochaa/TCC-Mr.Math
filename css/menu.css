@@ -63,10 +63,9 @@ ul li a i {
 .toggle {
     position: absolute;
     height: 30px;
-    margin-left: 0;
     width: 40px;
-    top: 25px;
-    left: 15px;
+    top: 21px;
+    left: 11px;
     z-index: 4;
     cursor: pointer;
     border-radius: 2px;
@@ -75,7 +74,7 @@ ul li a i {
 
 .toggle .common {
     position: absolute;
-    height: 2px;
+    height: 2.2px;
     width: 20px;
     background-color: white;
     border-radius: 50px;
@@ -128,15 +127,15 @@ input:checked ~ .slide {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 14px 5px;
+    padding: 2px 14px 2px;
     width: 100%;
     background-color: #1E38E6;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .logo_img {
-    height: 50px;
-    margin-left: 75%;
+    height: 45px;
+    margin-left: 86%;
     width: auto;
     margin-top: 5px;
 }

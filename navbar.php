@@ -32,7 +32,7 @@ include("admin.php");
 
 <div class="navbar">
   <ul>
-    <li id="link"><a href="../conta.php"><span class="material-symbols-outlined">
+    <li id="link"><a href="../profile.php"><span class="material-symbols-outlined">
           account_circle
         </span></a> </li>
   </ul>
