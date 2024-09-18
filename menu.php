@@ -51,31 +51,31 @@ ob_start();
 
     ?>
 
-    <div class="container">
-        <div class="corpo">
-            <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
-            <hr>
-            <div class="banner">
-                <img class="banner_img" src="img/banner_inicial.png">
-            </div>
-            <div class="box-aulas">
-                <div class="barra-aulas">
-                    <h2>Matematica Basica</h2>
-                    <div id="porcentagem-aula">
-                        <h3 id="porcentagem-aula-text"></h3>
-                    </div>
+
+    <div class="corpo">
+        <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
+        <hr>
+        <div class="banner">
+            <img class="banner_img" src="img/banner_inicial.png">
+        </div>
+        <div class="box-aulas">
+            <div class="barra-aulas">
+                <h2>Matematica Basica</h2>
+                <div id="porcentagem-aula">
+                    <h3 id="porcentagem-aula-text"></h3>
                 </div>
             </div>
-            <div class="box-questoes">
-                <div class="barra-questoes">
-                    <h2>Matematica Basica</h2>
-                    <div id="porcentagem-questoes">
-                        <h3 id="porcentagem-questoes-text"></h3>
-                    </div>
+        </div>
+        <div class="box-questoes">
+            <div class="barra-questoes">
+                <h2>Matematica Basica</h2>
+                <div id="porcentagem-questoes">
+                    <h3 id="porcentagem-questoes-text"></h3>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 

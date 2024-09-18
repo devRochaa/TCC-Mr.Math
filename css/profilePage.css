@@ -37,6 +37,7 @@
     margin: 1vw;
     margin-top: 1.5vw;
     width: 15vw;
+    border-radius: 100%;
 }
 
 .title{
@@ -310,4 +311,19 @@
 
 .checkbox-form-button-display{
     margin-top: 2.40rem;
+}
+
+.logout-button {
+    font-size: 11px ;
+    display: flex;
+    width: 9.5%;
+    margin-left: 46%;
+    background-color: transparent;
+    border: 2px solid #d81414;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #d81414;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }

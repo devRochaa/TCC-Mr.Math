@@ -16,7 +16,11 @@
   include("../navbar.php");
   include("../conexao.php");
 
-  $sql = "SELECT id, nome_video, link, id_materia, descricao from videos";
+  if (isset($_POST['enviar'])) {
+    $id_materia = $_POST['id_materia'];
+  }
+
+  $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
   $result = mysqli_query($conexao, $sql);
   $videos = [];
 
@@ -24,17 +28,18 @@
     $videos[] = [
       'titulo' => $row['nome_video'],
       'link' => $row['link'],
-      'id_materia' => $row['id_materia'],
       'descricao' => $row['descricao']
     ];
   }
 
   ?>
+
   <div class="container">
     <?php if (!empty($videos)) { ?>
       <div class="main-video-container">
-        <iframe id='iframe' width="540" height="315" src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id='iframe' width="640" height="360" src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <h3 class="main-vid-title"><?php echo $videos[0]['titulo']; ?></h3>
+        <p style="margin-top: 2%"><?php echo $videos[0]['descricao']; ?></p>
       </div>
       <div class="video-list-container" id="videosList">
         <?php foreach ($videos as $video) { ?>
@@ -44,7 +49,8 @@
           </a>
         <?php } ?>
       </div>
-    <?php } else { ?>
+    <?php } else {
+      echo $id_materia; ?>
       <p>Nenhum vídeo disponível no momento.</p>
     <?php } ?>
   </div>
