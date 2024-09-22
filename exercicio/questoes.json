@@ -1,0 +1,12 @@
+[
+    {
+        "questao": "Quanto é 2 + 4 + 2?",
+        "alternativasErradas": ["4", "9", "6"],
+        "alternativaCorreta": "8"
+    },
+    {
+        "questao": "Qual o maior planeta do Sistema Solar?",
+        "alternativasErradas": ["Terra", "Marte", "Vênus"],
+        "alternativaCorreta": "Júpiter"
+    }
+]

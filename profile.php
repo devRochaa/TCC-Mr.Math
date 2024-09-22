@@ -27,7 +27,7 @@
     $usuario = mysqli_fetch_assoc($result);
 
 
-    if (isset($usuario['pfp'])) {
+    
     ?>
         <div class="second-body">
 
@@ -36,9 +36,9 @@
                 <!--Informações-->
                 <div class="info-container">
                     <div class="imagem-container">
-                        <img class="imagem-perfil" src="img/pfp/<?php echo $usuario['pfp'];
+                        <img class="imagem-perfil" src="<?php if (isset($usuario['pfp'])) {echo "img/pfp/" , $usuario['pfp'];
                                                             } else {
-                                                                echo 'profile.png';
+                                                                echo 'img/pfp/profile.png';
                                                             } ?>">
                         <form action="account_process/upload.php" method="post" enctype="multipart/form-data">
                             <a id='botaofalso' class="edit-image-button">Editar Imagem</a>

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.main-title, .question-title {
+    font-weight: bold;
+}
+
+.question {
+    margin-bottom: 40px;
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.answer-label {
+    display: block;
+    margin: 10px auto;
+    width: 60%;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid blue;
+    border-radius: 50px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.answer-input[type="radio"] {
+    display: none;
+}
+
+.answer-label:hover {
+    background-color: lightgray;
+}
+
+.answer-input[type="radio"]:checked + .answer-label {
+    background-color: lightblue;
+    border-color: darkblue;
+}
+
+.correct {
+    background-color: lightgreen;
+    border-color: green;
+}
+
+.wrong {
+    background-color: lightcoral;
+    border-color: red;
+}
+
+.correct-answer {
+    font-weight: bold;
+    color: green;
+}
+
+.hidden {
+    display: none;
+}
+
+.submit-button, .next-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+.submit-button:hover, .next-button:hover {
+    background-color: darkblue;
+}
+
+.submit-button:disabled, .next-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+#quiz-container {
+    margin-top: 50px;
+}
+
+.next-button {
+    display: none;
+}

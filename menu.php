@@ -1,10 +1,8 @@
 <?php
 ob_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +11,6 @@ ob_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/menu.css?=<?php echo time(); ?>">
 </head>
-
-
 <body>
     <?php
     include("navbarH.php");
@@ -51,7 +47,6 @@ ob_start();
 
     ?>
 
-
     <div class="corpo">
         <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
         <hr>
@@ -76,9 +71,6 @@ ob_start();
         </div>
     </div>
 
-
-
-
     <script>
         var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
         var ex_feitos = "<?php echo $ex_feitos; ?>";
@@ -102,5 +94,4 @@ ob_start();
         // Exemplo de uso: Atualizar a barra para 70%
     </script>
 </body>
-
 </html>
