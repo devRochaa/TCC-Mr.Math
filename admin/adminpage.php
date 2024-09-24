@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página do Administrador</title>
-  <link rel="stylesheet" href="css/navbar.css?=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../css/navbar.css?=<?php echo time(); ?>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -67,8 +67,8 @@
 
 
 <?php
-include("navbarH.php");
-include("conexao.php");
+include("../navbar.php");
+include("../conexao.php");
 
 $sql = "SELECT nome, sobrenome, email, senha, rm, telefone, bio FROM usuarios";
 $result = mysqli_query($conexao, $sql);
@@ -76,7 +76,9 @@ $result = mysqli_query($conexao, $sql);
 ?>
 <div class="div-botao">
 
-  <a href="videos/addvideo.php" style="text-decoration:none;"><button class="btn-add" type="button">Adicionar vídeos</button></a>
+  <a href="addvideo.php" style="text-decoration:none;"><button class="btn-add" type="button">Adicionar vídeos</button></a>
+  <a href="addExe.php" style="text-decoration:none;"><button class="btn-add" type="button">Adicionar exercícios</button></a>
+  <a href="addmateria.php" style="text-decoration:none;"><button class="btn-add" type="button">Adicionar Matéria</button></a>
 
 </div>
 
@@ -90,6 +92,7 @@ if (mysqli_num_rows($result) > 0) {
     echo '<p><strong>RM:</strong> ' . $usuario['rm'] . '</p>';
     echo '<p><strong>Telefone:</strong> ' . $usuario['telefone'] . '</p>';
     echo '<p><strong>Bio:</strong> ' . $usuario['bio'] . '</p>';
+    echo '<button>Editar</button>';
     echo '</li>';
   }
   echo '</ul>';

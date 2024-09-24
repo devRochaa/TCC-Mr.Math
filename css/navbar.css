@@ -21,7 +21,7 @@ body {
     z-index: 3;
 }
 
-h1 {
+.menu-h1 {
     color: white;
     font-weight: 800;
     text-align: left;

@@ -31,19 +31,18 @@
       'descricao' => $row['descricao']
     ];
   }
-
   ?>
 
   <div class="container">
     <?php if (!empty($videos)) { ?>
       <div class="main-video-container">
         <iframe id='iframe' width="640" height="360" src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <h3 class="main-vid-title"><?php echo $videos[0]['titulo']; ?></h3>
-        <p style="margin-top: 2%"><?php echo $videos[0]['descricao']; ?></p>
+        <h3 class="main-vid-title" id="main-title"><?php echo $videos[0]['titulo']; ?></h3>
+        <p style="margin-top: 2%" id="main-description"><?php echo $videos[0]['descricao']; ?></p>
       </div>
       <div class="video-list-container" id="videosList">
         <?php foreach ($videos as $video) { ?>
-          <a id="<?php echo $video['link']; ?>" class='thumb'>
+          <a id="<?php echo $video['link']; ?>" class='thumb' data-title="<?php echo $video['titulo']; ?>" data-description="<?php echo $video['descricao']; ?>">
             <img height='90vw' src='../img/banner7.png'>
             <p><?php echo $video['titulo']; ?></p>
           </a>
@@ -62,7 +61,15 @@
         for (var i = 0; i < elements.length; i++) {
           elements[i].addEventListener('click', function(e) {
             var codigo = e.currentTarget.id;
+            var title = e.currentTarget.getAttribute('data-title'); // Obtém o título
+            var description = e.currentTarget.getAttribute('data-description'); // Obtém a descrição
+
+            // Atualiza o iframe com o novo vídeo
             document.getElementById("iframe").src = 'https://www.youtube.com/embed/' + codigo;
+
+            // Atualiza o título e a descrição
+            document.getElementById("main-title").innerText = title;
+            document.getElementById("main-description").innerText = description;
           });
         }
       }

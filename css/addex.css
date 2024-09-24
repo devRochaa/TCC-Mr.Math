@@ -1,0 +1,19 @@
+.cont {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.lbl {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerr {
+  width: 20vw;
+}
+
+.quantAlt {
+  width: 20vw;
+}

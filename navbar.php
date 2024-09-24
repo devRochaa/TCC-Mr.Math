@@ -11,7 +11,7 @@ include("admin.php");
   </div>
 
   <div class="slide">
-    <h1>MENU</h1>
+    <h1 class="menu-h1">MENU</h1>
     <ul>
       <li><a class="burguer" href="../menu.php"><i class="fas fa-tv"></i>Inicio</a></li>
       <li><a class="burguer" href="../videos/selecionar.php"><i class="far fa-user"></i>Aulas</a></li>
@@ -22,7 +22,7 @@ include("admin.php");
       <li><a class="burguer" href="#"><i class="far fa-heart"></i>dashbord</a></li>
       <li><a class="burguer" href="#"><i class="fas fa-cogs"></i>dashbord</a></li>
       <?php if ($admin == true) {
-        echo "<li><a class='burguer' href='../adminpage.php'><i class='fas fa-cogs'></i>admin</a></li>";
+        echo "<li><a class='burguer' href='../admin/adminpage.php'><i class='fas fa-cogs'></i>admin</a></li>";
       } ?>
     </ul>
   </div>

@@ -50,32 +50,32 @@
   ?>
   <div class="container">
     <div class="corpo">
-      <div class="opcao">
-        <div class="features">
-          <?php if (!empty($materias)) { ?>
-            <?php foreach ($materias as $materias) { ?>
-              <div class="card">
-                <img src="../img/banner7.png">
-
-                <div>
-                  <h1><?php echo $materias['nome']; ?></h1>
-                  <h2> <?php echo $materias['descricao']; ?></h2>
-                  <form action="video.php" method="POST">
-                    <input type="text" id="idmateria" name="id_materia" style="display:none;">
-                    <script>
-                      const ipt_materia = document.getElementById('idmateria');
-                      ipt_materia.value = <?php echo $materias['id']; ?>;
-                    </script>
-                    <button role="button" name="enviar" type="submit">Ver</button>
-                  </form>
-                </div>
-              </div>
 
 
-          <?php }
-          } ?>
-        </div>
-      </div>
+      <?php if (!empty($materias)) { ?>
+        <?php foreach ($materias as $materias) { ?>
+          <div class="card">
+            <img src="../img/banner7.png">
+
+            <div>
+              <h1><?php echo $materias['nome']; ?></h1>
+              <h2> <?php echo $materias['descricao']; ?></h2>
+              <form action="video.php" method="POST">
+                <input type="text" id="idmateria" name="id_materia" style="display:none;">
+                <script>
+                  const ipt_materia = document.getElementById('idmateria');
+                  ipt_materia.value = <?php echo $materias['id']; ?>;
+                </script>
+                <button role="button" name="enviar" type="submit">Ver</button>
+              </form>
+            </div>
+          </div>
+
+
+      <?php }
+      } ?>
+
+
     </div>
   </div>
 </body>

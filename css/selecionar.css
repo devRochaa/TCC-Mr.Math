@@ -1,7 +1,11 @@
- .corpo{
-      width: 80%;
-      height: auto;
-      margin: 20px auto;
+.corpo{
+  width: 80%;
+  height: auto;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 20px; 
   }
 
 .card{
@@ -39,7 +43,7 @@
 }
 .card h2 {
   font-size: .9rem;
-  color: #ffffff;
+  color: #c0c0c0;
   text-align: center;
   padding-top: 6px;
   padding-bottom: 21px;
@@ -50,7 +54,7 @@
   background-color: #0244f8;
   color: #ffffff;
   height: 30px;
-  width: 80%;
+  width: 12vw;
   font-family: Graphik,-apple-system,system-ui,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
   font-size: 1rem;
   font-weight: bold;
@@ -70,7 +74,7 @@
 @media (max-width: 600px) {
   .card button {
       height: 28px;
-      width: 90%;
+      width: 15vw;
       font-size: 0.9rem;
   }
 }
@@ -78,7 +82,7 @@
 @media (max-width: 400px) {
   .card button {
       height: 26px;
-      width: 100%;
+      width: 20vw;
       font-size: 0.8rem;
   }
 }
@@ -143,3 +147,4 @@
   font-size: .8rem;
 }
 }
+

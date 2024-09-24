@@ -1,12 +1,12 @@
-export default [
-  {
-    src: "../img/video.mp4",
-    title: "Editando fotos",
-  },
-  {
-    src: "../img/video2.mp4",
-    title: "3fff",
-  },
+function trocarvideo() {
+  var elements = document.getElementsByClassName('thumb');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', function (e) {
+      var codigo = e.currentTarget.id;
+      document.getElementById("iframe").src = 'https://www.youtube.com/embed/' + codigo;
 
+    });
+  }
+}
 
-];
+trocarvideo(); // Chama a função para adicionar os event listeners
