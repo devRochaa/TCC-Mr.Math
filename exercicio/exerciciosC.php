@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Exercícios</title>
     <link rel="stylesheet" href="../css/navbar.css?=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/exercicios.css?=<?php echo time(); ?>">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
+
 <body>
-    <?php include("../navbar.php");?>
-    <h1 class="main-title">Exercícios</h1>
-    <div id="quiz-container"></div>
-    <div>
-        <h2>Acertos: <span id="score">0</span></h2>
+    <?php
+    include("../navbar.php");
+    include("../conexao.php");
+
+
+    if (isset($_POST['enviar'])) {
+        $id_materia = $_POST['id_materia'];
+    }
+
+    ?>
+    <div class="corpo">
+        <h1 class="main-title">Exercícios</h1>
+        <div id="quiz-container"></div>
+        <div>
+            <h2>Acertos: <span id="score">0</span></h2>
+        </div>
+
+        <button id="next-question" class="next-button" onclick="showNextQuestion()">Próxima Questão</button>
     </div>
-
-    <button id="next-question" class="next-button" onclick="showNextQuestion()">Próxima Questão</button>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         let score = 0;
         let currentQuestionIndex = 0;
@@ -55,10 +71,10 @@
                 allAnswers.forEach(answer => {
                     const input = document.createElement('input');
                     const label = document.createElement('label');
-                    
+
                     input.type = 'radio';
                     input.classList.add('answer-input');
-                    
+
                     input.name = `question${index}`;
                     input.value = answer;
                     input.id = `answer${index}-${answer}`;
@@ -69,7 +85,7 @@
 
                     questionElement.appendChild(input);
                     questionElement.appendChild(label);
-                  
+
                 });
 
                 const submitButton = document.createElement('button');
@@ -145,6 +161,24 @@
                 questions[currentQuestionIndex].classList.add('active');
             } else {
                 alert('Você completou o questionário!');
+                const email = "<?php echo $_SESSION['usuario']; ?>";
+                const ex_feitos = currentQuestionIndex;
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'update.php', // O arquivo PHP que processa a atualização
+                    data: {
+                        score: score,
+                        ex_feitos: currentQuestionIndex,
+                        email: email
+                    },
+                    success: function(response) {
+                        alert('Dados atualizados com sucesso: ' + response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText); // Log de erro no console
+                    }
+                });
             }
 
             nextButton.style.display = 'none';
@@ -154,4 +188,5 @@
         loadQuestions();
     </script>
 </body>
+
 </html>

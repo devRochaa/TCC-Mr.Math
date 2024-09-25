@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    
 }
 
 .main-title, .question-title {
@@ -83,9 +83,14 @@ body {
 
 #quiz-container {
     margin-top: 50px;
+    
 }
 
 .next-button {
     display: none;
+    margin-left: 43.3%;
 }
 
+.corpo{
+    text-align: center;
+}

@@ -15,8 +15,9 @@
   <?php
   include("../navbar.php");
   include("../conexao.php");
-
-
+  if (isset($_SESSION['id_materia'])) {
+    unset($_SESSION['id_materia']);
+  }
   ob_start();
 
   $sim = 'nao';
@@ -51,7 +52,7 @@
             <div>
               <h1><?php echo $materias['nome']; ?></h1>
               <h2> <?php echo $materias['descricao']; ?></h2>
-              <form action="video.php" method="POST">
+              <form action="recebe.php" method="POST">
                 <input type="text" id="<?php echo $materias['id']; ?>" name="id_materia" style="display:none;">
                 <script>
                   ipt_materia = document.getElementById('<?php echo $materias['id']; ?>');

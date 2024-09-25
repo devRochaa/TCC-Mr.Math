@@ -1,17 +1,23 @@
 <?php
 include("../conexao.php");
+session_start();
+if (isset($_SESSION['id_materia'])) {
+    $id_materia = $_SESSION['id_materia'];
 
-// Query para selecionar questões e suas alternativas (tanto corretas quanto erradas)
-$sql = "SELECT 
+    // Query para selecionar questões e suas alternativas (tanto corretas quanto erradas)
+    $sql = "SELECT 
             e.id AS id_questao, 
             e.enunciado AS questao, 
             a.conteudo AS alternativa, 
             a.esta_correto AS correto 
         FROM alternativas a 
-        LEFT JOIN exercicios e ON a.id_questao = e.id 
-        ORDER BY e.id, a.esta_correto DESC"; // Ordena por id da questão e dá prioridade para a alternativa correta
+        LEFT JOIN exercicios e ON a.id_questao = e.id WHERE e.id_materia = $id_materia
+        ORDER BY e.id, a.esta_correto DESC "; // Ordena por id da questão e dá prioridade para a alternativa correta
 
-$result = mysqli_query($conexao, $sql);
+    $result = mysqli_query($conexao, $sql);
+} else {
+    header("location: selecionarEx.php");
+}
 
 $quiz = [];
 $current_questao = null;
@@ -66,5 +72,3 @@ $json = json_encode($quiz, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 // Exibindo o JSON gerado
 echo $json;
-
-?>

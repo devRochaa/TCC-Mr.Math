@@ -15,7 +15,7 @@ include("admin.php");
     <ul>
       <li><a class="burguer" href="../menu.php"><i class="fas fa-tv"></i>Inicio</a></li>
       <li><a class="burguer" href="../videos/selecionar.php"><i class="far fa-user"></i>Aulas</a></li>
-      <li><a class="burguer" href="../exercicio/exerciciosC.php"><i class="fab fa-gripfire"></i>Questões</a></li>
+      <li><a class="burguer" href="../exercicio/selecionarEx.php"><i class="fab fa-gripfire"></i>Questões</a></li>
       <li><a class="burguer" href="#"><i class="far fa-comments"></i>Cronograma</a></li>
       <li><a class="burguer" href="#"><i class="far fa-folder"></i>Anotação</a></li>
       <li><a class="burguer" href="../desempenho/desempenho.php"><i class="far fa-address-book"></i>Desempenho</a></li>

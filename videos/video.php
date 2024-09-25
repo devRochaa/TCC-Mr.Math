@@ -18,10 +18,10 @@
 
   if (isset($_POST['enviar'])) {
     $id_materia = $_POST['id_materia'];
-  }
 
-  $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
-  $result = mysqli_query($conexao, $sql);
+    $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
+    $result = mysqli_query($conexao, $sql);
+  }
   $videos = [];
 
   while ($row = $result->fetch_assoc()) {
@@ -34,11 +34,12 @@
   ?>
 
   <div class="container">
-    
+
     <?php if (!empty($videos)) { ?>
       <div class="main-video-container">
         <iframe id='iframe' src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <h3 class="main-vid-title" id="main-title"><?php echo $videos[0]['titulo']; ?></h3>
+        <input id="assistida" type="checkbox"> <label>Marcar como assistida</label>
         <p style="margin-top: 2%" id="main-description"><?php echo $videos[0]['descricao']; ?></p>
       </div>
       <div class="video-list-container" id="videosList">
@@ -53,9 +54,10 @@
       echo $id_materia; ?>
       <p>Nenhum vídeo disponível no momento.</p>
     <?php } ?>
-  
-</div>
+
+  </div>
   <?php if (!empty($videos)) { ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       function trocarvideo() {
         var elements = document.getElementsByClassName('thumb');
@@ -76,6 +78,24 @@
       }
 
       trocarvideo(); // Chama a função para adicionar os event listeners
+
+      $("#assistida").click(function() {
+        const email = "<?php echo $_SESSION['usuario']; ?>";
+        $.ajax({
+          type: 'POST',
+          url: 'updateVideo.php', // O arquivo PHP que processa a atualização
+          data: {
+            assistido: 1,
+            email: email
+          },
+          success: function(response) {
+
+          },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText); // Log de erro no console
+          }
+        });
+      });
     </script>
   <?php } ?>
 </body>
