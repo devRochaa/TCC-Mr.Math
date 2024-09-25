@@ -8,7 +8,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 // Inclua o autoload do Composer se estiver utilizando o Composer
-require('../../../phpMyAdmin/vendor/autoload.php');
+require('../../../apps\phpmyadmin5.1.1\vendor/autoload.php');
 
 $mail = new PHPMailer(true);
 
@@ -35,7 +35,7 @@ try {
     </style>
     Confirme esse e-mail para ativar seu cadastro em nosso site.<br>
     Você só precisa clicar no botão abaixo: <br><br>
-    <a href='http://localhost/mrmathWEB/cadastro/ativacao.php?hash' style='
+    <a href='http://localhost/mrmathWEB/cadastro/ativacao.php?hash=$hash' style='
         background-color: #007bff;
         border: none;
         color: white;

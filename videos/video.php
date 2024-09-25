@@ -34,9 +34,10 @@
   ?>
 
   <div class="container">
+    
     <?php if (!empty($videos)) { ?>
       <div class="main-video-container">
-        <iframe id='iframe' width="640" height="360" src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id='iframe' src="https://www.youtube.com/embed/<?php echo $videos[0]['link'] ?>?si=I8GP-52uZ6k_cpd-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <h3 class="main-vid-title" id="main-title"><?php echo $videos[0]['titulo']; ?></h3>
         <p style="margin-top: 2%" id="main-description"><?php echo $videos[0]['descricao']; ?></p>
       </div>
@@ -52,8 +53,8 @@
       echo $id_materia; ?>
       <p>Nenhum vídeo disponível no momento.</p>
     <?php } ?>
-  </div>
-
+  
+</div>
   <?php if (!empty($videos)) { ?>
     <script>
       function trocarvideo() {
