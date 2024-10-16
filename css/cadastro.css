@@ -183,80 +183,38 @@
  .jatenho {
   color: #EFF5FF;
  }
-
- @media only screen and (max-width:1360px){
-  .card-login{
-    width: 85%;;
-  }
-}
-
-@media only screen and (max-width:1280px){
-  .card-login{
-    width: 90%;;
-  }
-
-  .textfield {
-    width: 100%;
-  }
-}
-
-  @media only screen and (max-width:960px){
+  @media only screen and (max-width:950px){
     .card-login{
-      width: 120%;;
-    }
-    .textfield {
-      width: 90%;
-      margin-left: 1rem;
-    }
-
-    .center-login-image {
-      height: 80vh;
-      display: flex;
-      margin-bottom: -11rem;
-      
+      width: 85%;;
     }
   }
 
   @media only screen and (max-width:600px){
-    .main-login {
-      width: 250%;
+    .main-login{
+      flex-direction: column;
+    }
+    .left-login >h1{
+      display: none;
     }
 
-    .left-login {
-      width: 30%;
+    .right-login{
+      width: 100%;
+      height: auto;
     }
 
-    .jatenho {
-      margin-left: 2rem;
+    .left-login{
+      width: 100%;
+      height: auto;
     }
-    
+
+    .left-login-image{
+      width: 50vw;
+    }
+
     .card-login{
-      width: 250%;;
-      margin-left: 50rem;
-      
-    }
-    .textfield {
-      width: 70%;
-      margin-left: 3rem;
-    }
-
-    .btn-login {
-      width: 70%;
-      margin-left: 4rem;
-      display: flex;
-     text-align: left;
-
-    }
-
-    .center-login-image {
-      height: 80vh;
-      display: flex;
-      margin-left: 15rem;
-      margin-bottom: -11rem;
-      
+      width: 90%;
     }
   }
- 
 
   ::-webkit-scrollbar{
     display: none;
