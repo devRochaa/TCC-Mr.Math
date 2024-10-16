@@ -20,7 +20,6 @@ include("admin.php");
       <li><a class="burguer" href="#"><i class="far fa-folder"></i>Anotação</a></li>
       <li><a class="burguer" href="desempenho/desempenho.php"><i class="far fa-address-book"></i>Desempenho</a></li>
       <li><a class="burguer" href="#"><i class="far fa-heart"></i>dashbord</a></li>
-      <li><a class="burguer" href="#"><i class="fas fa-cogs"></i>dashbord</a></li>
       <?php if ($admin == true) {
         echo "<li><a class='burguer' href='admin/adminpage.php'><i class='fas fa-cogs'></i>admin</a></li>";
       } ?>

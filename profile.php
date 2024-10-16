@@ -63,19 +63,18 @@
                             <div class="bio-display">
                                 <input class="bio-input" name='bio' id="bio" placeholder="Bio">
                             </div>
-                            <div class="button-display">
-
+                            <div class="button-display">                             
                                 <button type='submit' class="button">Salvar Alterações</button>
                         </form>
                     </div>
                 </div>
-            </div>
-            <a href='account_process/logout.php' style="text-decoration:none;"><button class="logout-button">Logout</button></a>
+            </div>  
+            <center> <a href='account_process/logout.php' style="text-decoration:none;"><button class="logout-button">Logout</button></a> </center>
             <!--Alterar Senha e apagar dados-->
             <div class="bottom-display">
                 <div class="info-password-container">
                     <div class="input-container">
-                        <h2>Alterar a senha</h2>
+                        <h2 class="title">Alterar a senha</h2>
                         <form>
                             <div class="input-password-display">
                                 <div class="input-structure">
@@ -100,7 +99,7 @@
             </div>
             <div class="delete-info-container">
                 <div class="input-container">
-                    <h2>Apagar seus dados</h2>
+                    <h2 class="title">Apagar seus dados</h2>
                     <div class="checkbox-display">
                         <div class="checkbox-structure">
                             <input class="checkbox-input" type="checkbox">

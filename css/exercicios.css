@@ -88,7 +88,8 @@ body {
 
 .next-button {
     display: none;
-    margin-left: 43.3%;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    text-align: center;
 }
 
 .corpo{

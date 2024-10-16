@@ -15,7 +15,7 @@
 
 
 .info-container{
-    display: inline-flex;
+    display: block;
     align-items: stretch;
     background-color: white;
     margin-top: 1.5vw;
@@ -25,7 +25,6 @@
 
 .imagem-container{
     background-color: rgb(255, 255, 255);
-    border-right: solid  1px rgb(224, 224, 224);
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     display: flex;
@@ -89,31 +88,32 @@
 
 .button-display{
     gap: 1vw;
-    justify-content: right;
+    justify-content: space-between;
     margin-top: 1vw;
     display: flex;
 
 }
 
-.text-input{
+.text-input {
     border: solid 1.75px rgb(165, 165, 165);
-    border-radius: 9px;
+    border-radius: 0.5vw;
     padding: 0.5vw;
-    width: 15vw;
-    font-size: 0.8vw;
+    width: 100%;
+    font-size: 1rem; /* Pode usar 'em' ou 'rem' para melhor responsividade */
     outline: none;
+    height: 3vw; /* Mantenha ou ajuste conforme necessário */
 }
 
 .text-input:read-only{
     background-color: rgb(243, 243, 243);
     border: solid 1.75px rgb(165, 165, 165);
-    border-radius: 9px;
+    border-radius: 0.5vw;
     padding: 0.5vw;
-    width: 15vw;
-    font-size: 0.8vw;
+    width: 100%;
+    font-size: 1rem; /* Pode usar 'em' ou 'rem' para melhor responsividade */
     outline: none;
+    height: 3vw; /* Mantenha ou ajuste conforme necessário */
     cursor: default;
-    
 }
 
 .text-input::placeholder{
@@ -122,11 +122,11 @@
 
 .bio-input{
     border: solid 1.75px rgb(165, 165, 165);
-    border-radius: 9px;
+    border-radius: 0.5vw;
     padding: 0.5vw;
-    width: 32vw;
+    width: 100%;
     padding-bottom: 5vw;
-    font-size: 0.8vw;
+    font-size: 1rem;
     outline: none;
 }
 
@@ -199,7 +199,7 @@
 
 .text-password-input{
     border: solid 1.75px rgb(165, 165, 165);
-    border-radius: 9px;
+    border-radius: 0.5vw;
     padding: 0.7vw;
     width: 20vw;
     font-size: 0.8vw;
@@ -231,7 +231,7 @@
 
 .link{
     top: 30px;
-    font-size: 0.9vw;
+    font-size: 1vw;
     color: #143699;
 }
 
@@ -316,15 +316,72 @@
 .logout-button {
     font-size: 11px ;
     display: flex;
-    width: 9.5%;
-    margin-left: 46%;
+    width: 5vw;
     background-color: transparent;
     border: 2px solid #d81414;
-    border-radius: 10px;
+    border-radius: 10px ;
+    padding-right: 3vw;
     padding: 0.75rem;
     color: #d81414;
     font-weight: 550;
     cursor: pointer;
     transition: all 0.3s ease;
     justify-content: center;
+}
+
+
+/* @MEDIA SCREEN  */
+
+@media (max-width: 768px) {
+
+    .link{
+        font-size: 2vw;
+    }
+
+    .title{
+        font-size: 3vw;
+    }
+
+    .text-input {
+        font-size: 0.8rem; /* Diminui o tamanho da fonte em telas menores */
+        padding: 1.5vw; /* Aumenta o padding para melhor usabilidade */
+        height: 4vw; /* Ajusta a altura para maior conforto */
+    }
+
+    .text-input:read-only {
+        font-size: 0.8rem; /* Diminui o tamanho da fonte em telas menores */
+        padding: 1.5vw; /* Aumenta o padding para melhor usabilidade */
+        height: 4vw; /* Ajusta a altura para maior conforto */
+    }
+
+    .bio-input {
+        font-size: 0.8rem; /* Diminui o tamanho da fonte em telas menores */
+        padding-bottom: 5vw;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .text-input {
+        font-size: 0.7rem; /* Diminui ainda mais para telas muito pequenas */
+        padding: 3.5vw; /* Aumenta o padding para melhor usabilidade */
+        height: 5vw; /* Ajusta a altura para maior conforto */
+    }
+
+    .text-input:read-only {
+        font-size: 0.7rem; /* Diminui o tamanho da fonte em telas menores */
+        padding: 3.5vw; /* Aumenta o padding para melhor usabilidade */
+        height: 5vw; /* Ajusta a altura para maior conforto */
+    }
+
+    .bio-input {
+        font-size: 0.7rem; /* Diminui o tamanho da fonte em telas menores */
+        padding-bottom: 7vw;
+    }
+    .bottom-display{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

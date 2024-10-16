@@ -44,7 +44,7 @@
       <?php if (!empty($materias)) { ?>
         <?php foreach ($materias as $materias) { ?>
           <div class="card">
-            <img src="../img/banner7.png">
+            <img src="../img/aulas.png">
             <script>
               let ipt_materia = '';
             </script>

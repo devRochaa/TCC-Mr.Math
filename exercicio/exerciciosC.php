@@ -34,6 +34,8 @@
         <button id="next-question" class="next-button" onclick="showNextQuestion()">Próxima Questão</button>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
         let score = 0;
         let currentQuestionIndex = 0;
@@ -160,9 +162,10 @@
             if (currentQuestionIndex < questions.length) {
                 questions[currentQuestionIndex].classList.add('active');
             } else {
-                alert('Você completou o questionário!');
+                swal('Você completou o questionário!');
                 const email = "<?php echo $_SESSION['usuario']; ?>";
                 const ex_feitos = currentQuestionIndex;
+
 
                 $.ajax({
                     type: 'POST',
@@ -173,12 +176,23 @@
                         email: email
                     },
                     success: function(response) {
-                        alert('Dados atualizados com sucesso: ' + response);
+                        swal({
+                    title: "Você completou os exercícios!",
+                    text: "Suas respostas foram salvas.",
+                    icon: "success",
+                    })
+                    .then((willDelete) => {
+                    // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
+                    if (willDelete) {
+                        window.location="selecionarEx.php"
+                    }
+                    });
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText); // Log de erro no console
                     }
                 });
+                
             }
 
             nextButton.style.display = 'none';

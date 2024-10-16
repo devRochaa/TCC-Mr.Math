@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    $sql = "SELECT ex_feitos from desempenho where id = $id";
+    $sql = "SELECT ex_feitos from desempenho where id_usuarios = $id";
     if ($result = mysqli_query($conexao, $sql)) {
       while ($row = $result->fetch_assoc()) {
         $bd_feitos = $row['ex_feitos'];
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("iis", $upd_acertos, $upd_feitos, $id);
 
     if ($stmt->execute()) {
-      echo "Usuário atualizado com sucesso!";
+      echo "";
     } else {
       echo "Erro ao atualizar usuário: " . $stmt->error;
     }

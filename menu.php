@@ -55,7 +55,7 @@ ob_start();
         </div>
         <div class="box-aulas">
             <div class="barra-aulas">
-                <h2>Matematica Basica</h2>
+                <h2>Aulas Assisitidas</h2>
                 <div id="porcentagem-aula">
                     <h3 id="porcentagem-aula-text"></h3>
                 </div>
@@ -63,20 +63,20 @@ ob_start();
         </div>
         <div class="box-questoes">
             <div class="barra-questoes">
-                <h2>Matematica Basica</h2>
+                <h2>Questões Feitas</h2>
                 <div id="porcentagem-questoes">
                     <h3 id="porcentagem-questoes-text"></h3>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 
     <script>
         var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
         var ex_feitos = "<?php echo $ex_feitos; ?>";
 
-        var aulas_porcentagem = (aulas_assistidas / 10) * 100;
-        var ex_porcentagem = (ex_feitos / 50) * 100;
+        var aulas_porcentagem = (aulas_assistidas / 7) * 100;
+        var ex_porcentagem = (ex_feitos / 16) * 100;
 
         function atualizarBarra(percentualA, percentualQ) {
             var barraProgressoAula = document.getElementById("porcentagem-aula");

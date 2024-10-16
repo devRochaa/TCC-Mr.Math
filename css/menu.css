@@ -213,7 +213,7 @@ input:checked ~ .slide {
         z-index: 1; /* Para que o texto esteja sobre a barra */
         padding-left: 10px;
     }
-    
+   
     #porcentagem-aula-text {
         margin-left: 10%;
     }

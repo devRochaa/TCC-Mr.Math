@@ -53,7 +53,7 @@ $code = "MAT" . $id; // Ajuste conforme necessário
 
 // Cria uma lista para as alternativas
 $alternativas = [];
-$letras = ['A', 'B', 'C', 'D', 'E'];
+$letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
 foreach ($letras as $letra) {
   if (isset($_POST[$letra])) {
@@ -70,6 +70,16 @@ if (isset($id_imagem)) {
 }
 // Insere o exercício no banco de dados
 if (mysqli_query($conexao, $sql)) {
+  $id_questao = mysqli_insert_id($conexao); // Supondo que você já tenha inserido a questão e obtido o ID
+
+foreach ($alternativas as $letra => $texto) {
+    $esta_correto = ($letra === $_POST['resposta']) ? 'sim' : 'não'; // Verifica se é a alternativa correta
+    $sql_alt = "INSERT INTO alternativas (conteudo, esta_correto, id_questao) VALUES ('$texto', '$esta_correto', $id_questao)";
+    
+    if (!mysqli_query($conexao, $sql_alt)) {
+        echo "Erro ao salvar a alternativa $letra: " . mysqli_error($conexao);
+    }
+}
   echo "Upload e salvamento foram feitos com sucesso!";
 } else {
   echo "Erro ao salvar no banco de dados: " . $conexao->error;
