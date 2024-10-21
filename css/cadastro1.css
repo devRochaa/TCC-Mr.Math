@@ -1,295 +1,181 @@
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-  body{
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-  }
+body{
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+}
 
-  .poppins-bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    margin-bottom: -1.50rem;
-  }
+body * {
+  box-sizing: border-box;
+}
 
-  .poppins-boldd {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
+.main-login{
+  width: 100vw;
+  height: 102vh;
+  background: #EFF5FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-login{
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.left-login > h1{
+  font-size: 3vw;
+  color: #1E38E6;
+}
+
+.left-login-image{
+  width: 35vw;
+}
+
+.right-login{
+  width: 40vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #0B1555;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #143699;
+}
+
+.card-login > h1{
+  color:  #EFF5FF;
+  font-weight: 800;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.textfield{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.textfield > input{
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #58719b;
+  color: #f0ffffde;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.textfield > label{
+  color: #ffffffde;
+  margin-bottom: 10px;
   
+}
 
-  body * {
-    box-sizing: border-box;
-  }
-
-  .main-login{
-    width: 110vw;
-    height: 100vh;
-    background: #d5e5ff;
-    display: flex;
-  }
-
-  .left-login{
-    background-color: #143699;
-    border-radius: 0 3vh 3vh 0;
-    width: 45vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .left-login > h1{
-    padding: 10px 0;
-    font-weight: 600;
-    color: #ffffff;
-  }
-
-  .mrmath {
-    background-color: #ffffff;
-    border-radius: 0.75vw;
-    padding: 1vh;
-    font-size: 6vh;
-    color: #0B1555;
-    -webkit-text-stroke: 0.3vh #0B1555;
-    text-transform: uppercase;
-  }
-
-
-  .left-login-image{
-    width: 35vw;
-  }
-
-  .center-login{
-    width: 20vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
-
-  .center-login-image {
-    height: 100vh;
-    display: flex;
-    
-  }
-
-  .right-login{
-    width: 30vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .card-login{
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px 35px;
-    background: #0B1555;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px #143699;
-  }
-
-  .card-login > h1{
-    color:  #EFF5FF;
-    font-weight: 800;
-    margin: 0;
-    margin-bottom: 10px;
-  }
-
-  .textfield{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 10px 0px;
-  }
-
-  .textfield > input{
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    background: #58719b;
-    color: #f0ffffde;
-    font-size: 12pt;
-    box-shadow: 0px 10px 40px #00000056;
-    outline: none;
-    box-sizing: border-box;
-  }
-
-  .textfield > label{
-    color: #ffffffde;
-    margin-bottom: 10px;
-    
-  }
-
-  .textfield > input::placeholder{
-    color: #c5c5c6;
-  }
-
+.textfield > input::placeholder{
+  color: #c5c5c6;
+}
 
 .btn-login{
-  appearance: none;
-  background-color: #143699;
-  border: 0.125em solid #143699;
-  border-radius: 0.9375em;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
+  width: 100%;
+  padding: 16px 0px;
   margin-top: 10px;
-  min-height: 3.75em;
-  min-width: 0;
+  border: none;
+  border-radius: 8px;
   outline: none;
-  padding: 1em 7em;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  will-change: transform;
- }
- 
- .btn-login:disabled {
-  pointer-events: none;
- }
- 
- .btn-login:hover {
-  color: #b3b3b3;
-  background-color: transparent;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
- }
- 
- .btn-login:active {
-  box-shadow: none;
-  transform: translateY(0);
- }
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #f0ffffde;
+  background: #1E38E6;
+  cursor: pointer;
+  box-shadow: 0px 10px 40px -12px #1E38E6;
+}
 
- .jatenho {
-  color: #EFF5FF;
- }
-
- @media only screen and (max-width:1360px){
+@media only screen and (max-width:950px){
   .card-login{
     width: 85%;;
   }
 }
 
-@media only screen and (max-width:1280px){
-  .card-login{
-    width: 90%;;
+@media only screen and (max-width:600px){
+  .main-login{
+    flex-direction: column;
   }
-
-  .textfield {
-    width: 100%;
-  }
-}
-
-  @media only screen and (max-width:960px){
-    .card-login{
-      width: 120%;;
-    }
-    .textfield {
-      width: 90%;
-      margin-left: 1rem;
-    }
-
-    .center-login-image {
-      height: 80vh;
-      display: flex;
-      margin-bottom: -11rem;
-      
-    }
-  }
-
-  @media only screen and (max-width:600px){
-    .main-login {
-      width: 250%;
-    }
-
-    .left-login {
-      width: 30%;
-    }
-
-    .jatenho {
-      margin-left: 2rem;
-    }
-    
-    .card-login{
-      width: 250%;;
-      margin-left: 50rem;
-      
-    }
-    .textfield {
-      width: 70%;
-      margin-left: 3rem;
-    }
-
-    .btn-login {
-      width: 70%;
-      margin-left: 4rem;
-      display: flex;
-     text-align: left;
-
-    }
-
-    .center-login-image {
-      height: 80vh;
-      display: flex;
-      margin-left: 15rem;
-      margin-bottom: -11rem;
-      
-    }
-  }
- 
-
-  ::-webkit-scrollbar{
+  .left-login >h1{
     display: none;
   }
 
-  #result{
-    width: 5%;
-    position: absolute;
-    margin-left: 90%;
-  }
-
-  #email{
+  .right-login{
     width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    background: #58719b;
-    color: #f0ffffde;
-    font-size: 12pt;
-    box-shadow: 0px 10px 40px #00000056;
-    outline: none;
-    box-sizing: border-box;
+    height: auto;
   }
 
-  #email::placeholder{
-    color: #c5c5c6;
-  }
-
-  .div-email{
+  .left-login{
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
+    height: auto;
   }
+
+  .left-login-image{
+    width: 50vw;
+  }
+
+  .card-login{
+    width: 90%;
+  }
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+#result{
+  width: 5%;
+  position: absolute;
+  margin-left: 90%;
+}
+
+#email{
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #58719b;
+  color: #f0ffffde;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#email::placeholder{
+  color: #c5c5c6;
+}
+
+.div-email{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}

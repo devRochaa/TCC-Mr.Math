@@ -8,7 +8,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 // Inclua o autoload do Composer se estiver utilizando o Composer
-require('../../../apps\phpmyadmin5.1.1\vendor/autoload.php');
+require('../../../apps\phpmyadmin5.1.1/vendor/autoload.php');
 
 $mail = new PHPMailer(true);
 
@@ -49,11 +49,12 @@ try {
   // Define que o corpo será em HTML
   $mail->isHTML(true);
   $mail->Body = $conteudo_email;
-
+  $_SESSION['hash'] = $hash;
   // Tenta enviar o e-mail
   if ($mail->send()) {
     echo "<style>#carregando{display:none;}</style>
-        <div class='alert alert-light' role='alert'>Link de ativação de cadastro foi enviado ao seu e-mail. Verifique sua caixa de entrada.</div>";
+        <div class='alert alert-light' role='alert'>Link de ativação de cadastro foi enviado ao seu e-mail. Verifique sua caixa de entrada.</div> 
+        <form method='POST' action='processpost.php'> <label>Insira o código ou confirme diretamente pelo e-mail</label><input name='codigo' type='text'></form>";
   } else {
     echo "<style>#carregando{display:none;}</style>
         <div class='alert alert-primary' role='alert'>Falha ao enviar link de ativação!</div>";
