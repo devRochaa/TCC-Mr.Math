@@ -8,7 +8,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 // Inclua o autoload do Composer se estiver utilizando o Composer
-require('../../../apps\phpmyadmin5.1.1/vendor/autoload.php');
+require('../../../phpMyAdmin/vendor/autoload.php');
 
 $mail = new PHPMailer(true);
 
@@ -44,17 +44,25 @@ try {
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-    '> Confirmar E-mail</a>";
+    '> Confirmar E-mail</a> <br><br>  
+    Ou inserir o código de ativação no site.
+    <br>
+    Código : <br>
+     <p style='background-color: rgb(217, 217, 217);font-size: 16px;width: fit-content;font-weight: bold;'>$hash</p>
+     <p style='color: red;font-size: 16px;font-weight: bold;'>Não compartilhe esse código com ninguém</p>";
+
 
   // Define que o corpo será em HTML
   $mail->isHTML(true);
   $mail->Body = $conteudo_email;
-  $_SESSION['hash'] = $hash;
   // Tenta enviar o e-mail
   if ($mail->send()) {
     echo "<style>#carregando{display:none;}</style>
-        <div class='alert alert-light' role='alert'>Link de ativação de cadastro foi enviado ao seu e-mail. Verifique sua caixa de entrada.</div> 
-        <form method='POST' action='processpost.php'> <label>Insira o código ou confirme diretamente pelo e-mail</label><input name='codigo' type='text'></form>";
+    <div class='alert alert-light' role='alert'>Link de ativação de cadastro foi enviado ao seu e-mail. Verifique sua caixa de entrada.</div> 
+    <div class='alert alert-primary' role='alert'><form method='POST' action='processpost.php'> <label>Insira o código ou confirme diretamente pelo e-mail</label><input name='codigo' type='text'>
+    <button type='submit'>Enviar</button></form></div>";
+    session_start();
+    $_SESSION['hash'] = $hash;
   } else {
     echo "<style>#carregando{display:none;}</style>
         <div class='alert alert-primary' role='alert'>Falha ao enviar link de ativação!</div>";
