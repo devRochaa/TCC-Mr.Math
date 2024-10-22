@@ -17,8 +17,8 @@ if ($result->num_rows > 0) {
 
   $hash = sprintf('%07X', mt_rand(0, 0xFFFFFFF));
 
-  $sql = "INSERT INTO usuarios(nome, sobrenome, email, senha, data_cadastro, hash) 
-    VALUES ('$nome', '$sobrenome', '$email', '$senha', now(), '$hash');";
+  $sql = "INSERT INTO usuarios(nome, sobrenome, email, senha, data_cadastro, hash, status) 
+    VALUES ('$nome', '$sobrenome', '$email', '$senha', now(), '$hash', '1');";
   if ($result = mysqli_query($conexao, $sql)) {
 
 

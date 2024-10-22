@@ -21,16 +21,8 @@ ob_start();
     include("conexao.php");
 
     $logado = $_SESSION["usuario"];
-
-    $sql = "SELECT nome FROM usuarios WHERE email = '$logado'";
-    $con = mysqli_query($conexao, $sql);
-    if ($con->num_rows > 0) {
-        // Saída de dados de cada linha
-        while ($row = $con->fetch_assoc()) {
-            $nome = $row["nome"];
-        }
-    }
-    $_SESSION['nome'] = $nome;
+    $nome = $_SESSION['nome'];
+    
 
     $sql = "SELECT id from usuarios where email = '$logado'";
     $result = $conexao->query($sql);
