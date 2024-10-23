@@ -16,7 +16,7 @@ if (!isset($_GET["email"]) && !isset($_GET["senha"])) {
 
   if ($linhas > 0) {
     $row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
-    if ($row['status'] == '1'){
+    if ($row['status'] == 1){
       echo "<script>swal('Seu e-mail ainda não foi verificado!', 'Confira sua caixa de e-mail', 'error');</script>";
       
     }else if ($row['status']== 2){
@@ -24,8 +24,8 @@ if (!isset($_GET["email"]) && !isset($_GET["senha"])) {
       
       session_start();
       $_SESSION['usuario'] = $email;
-      $_SESSION['nome'] = ucfirst($row['u.nome']);
-      header("location: ../menu.php");
+      $_SESSION['nome'] = ucfirst($row['nome']);
+      echo "<script> window.location.href='../menu.php' </script>";
     }
 }
 else{

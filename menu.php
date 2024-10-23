@@ -13,6 +13,7 @@ ob_start();
 </head>
 <body>
     <?php
+
     include("navbarH.php");
     if (!isset($_SESSION["usuario"])) {
         header("location: index.html");
@@ -37,6 +38,14 @@ ob_start();
         $ex_feitos = $row['ex_feitos'];
     }
 
+    $sql = "SELECT id from videos";
+    $resultado = mysqli_query($conexao, $sql);
+    $qtd_videos = mysqli_affected_rows($conexao);
+
+    $sql = "SELECT id from exercicios";
+    $resultado = mysqli_query($conexao, $sql);
+    $qtd_exercicios = mysqli_affected_rows($conexao);
+    
     ?>
 
     <div class="corpo">
@@ -66,9 +75,12 @@ ob_start();
     <script>
         var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
         var ex_feitos = "<?php echo $ex_feitos; ?>";
+        var total_aulas = "<?php echo $qtd_videos;?> ";
+        var total_ex = "<?php echo $qtd_exercicios; ?>";
 
-        var aulas_porcentagem = (aulas_assistidas / 7) * 100;
-        var ex_porcentagem = (ex_feitos / 16) * 100;
+
+        var aulas_porcentagem = (aulas_assistidas / total_aulas) * 100;
+        var ex_porcentagem = (ex_feitos / total_ex) * 100;
 
         function atualizarBarra(percentualA, percentualQ) {
             var barraProgressoAula = document.getElementById("porcentagem-aula");
@@ -77,13 +89,13 @@ ob_start();
             var textoPorcentagemQuestoes = document.getElementById("porcentagem-questoes-text");
 
             barraProgressoAula.style.width = percentualA + "%";
-            textoPorcentagemAula.innerText = percentualA + "%";
+            textoPorcentagemAula.innerText = Math.pow(parseInt(percentualA), 1) + "%";
             barraProgressoQuestoes.style.width = percentualQ + "%";
-            textoPorcentagemQuestoes.innerText = percentualQ + "%";
+            textoPorcentagemQuestoes.innerText = Math.pow(parseInt(percentualQ), 1) + "%";
         }
         atualizarBarra(aulas_porcentagem, ex_porcentagem);
 
-        // Exemplo de uso: Atualizar a barra para 70%
+        
     </script>
 </body>
 </html>

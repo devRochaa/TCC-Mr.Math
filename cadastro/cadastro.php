@@ -1,8 +1,8 @@
 <?php
 include("../conexao.php");
 
-$nome = ucfirst($_GET["nome"]);
-$sobrenome = ucfirst($_GET["sobrenome"]);
+$nome = ucfirst(strtolower($_GET["nome"]));
+$sobrenome = ucfirst(strtolower($_GET["sobrenome"]));
 $email = $_GET["email"];
 $senha = md5($_GET["senha"]);
 

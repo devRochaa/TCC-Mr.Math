@@ -59,8 +59,8 @@ try {
   if ($mail->send()) {
     echo "<style>#carregando{display:none;}</style>
     <div class='alert alert-light' role='alert'>Link de ativação de cadastro foi enviado ao seu e-mail. Verifique sua caixa de entrada.</div> 
-    <div class='alert alert-primary' role='alert'><form method='POST' action='processpost.php'> <label>Insira o código ou confirme diretamente pelo e-mail</label><input name='codigo' type='text'>
-    <button type='submit'>Enviar</button></form></div>";
+    <div class='alert alert-primary' role='alert'><form method='POST' action='processpost.php'> <center><label>Insira o código ou confirme diretamente pelo e-mail</label></center><input style='width=100%' name='codigo' type='text'> <br>
+    <center><button style='margin-top:6px;' type='submit'>Enviar</button></center></form></div>";
     session_start();
     $_SESSION['hash'] = $hash;
   } else {

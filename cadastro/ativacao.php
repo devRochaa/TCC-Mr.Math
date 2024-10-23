@@ -14,56 +14,54 @@
 
   <div class="main-login">
     <div class="left-login">
-      <h1 class="poppins-bold"> FAÇA SEU CADASTRO<h1 class="poppins-boldd">ENTRE PARA O TIME</h1>
-        <h2 class="mrmath">MR-MATH</h2>
-      </h1>
+      <h1 class="poppins-bold">FAÇA SEU CADASTRO</h1>
+      <h1 class="poppins-boldd">ENTRE PARA O TIME</h1>
+      <h2 class="mrmath">MR-MATH</h2>
       <img src="../img/calcanimation.svg" class="left-login-image" alt="calculadora animação">
     </div>
-  </div>
-  <div class="center-login"> <img src="../img/marcelo apontando com uma mao so sem fundo.png" alt="marcelo" class="center-login-image">
-  </div>
-  <div class="right-login">
-    <div class="card-login">
-      <h1 id="h1">CADASTRO</h1>
-      <?php
-      if (isset($_GET['hash'])) {
-        $hash = $_GET['hash'];
 
-        // faz a conexão
-        include("../conexao.php");
+    <div class="right-login">
+      <div style="margin-left:25vw;" class="card-login">
+        <h1 id="h1">CADASTRO</h1>
+        <?php
+        if (isset($_GET['hash'])) {
+          $hash = $_GET['hash'];
 
-        // verifica se a hash resgatada na URL existe no banco de dados
-        $sqlVerificaHash = "select hash from usuarios where hash='$hash'";
+          // faz a conexão
+          include("../conexao.php");
 
-        if ($resultadoVerificaHash = mysqli_query($conexao, $sqlVerificaHash)) {
-          $qtdLinhas = mysqli_num_rows($resultadoVerificaHash);
+          // verifica se a hash resgatada na URL existe no banco de dados
+          $sqlVerificaHash = "select hash from usuarios where hash='$hash'";
 
-          if ($qtdLinhas > 0) {
-            $sqlAlteraStatus = "UPDATE usuarios SET status='2', hash='', ativacao=now() WHERE hash='$hash'";
+          if ($resultadoVerificaHash = mysqli_query($conexao, $sqlVerificaHash)) {
+            $qtdLinhas = mysqli_num_rows($resultadoVerificaHash);
 
-            if (mysqli_query($conexao, $sqlAlteraStatus)) {
-              echo "<div class='alert alert-success role='alert'>
-                Cadastro ativado com sucesso! <a href='../login/inicio.php'>Clique aqui</a> para fazer o login
+            if ($qtdLinhas > 0) {
+              $sqlAlteraStatus = "UPDATE usuarios SET status='2', hash='', ativacao=now() WHERE hash='$hash'";
+
+              if (mysqli_query($conexao, $sqlAlteraStatus)) {
+                echo "<div class='alert alert-success role='alert'>
+                Cadastro ativado com sucesso! <a href='../login/login.php'>Clique aqui</a> para fazer o login
                 </div>";
-            } else {
-              echo "<div class='alert alert-danger role='alert'>
+              } else {
+                echo "<div class='alert alert-danger role='alert'>
                 Erro ao alterar o status: " . mysqli_error($conexao) . "
                 </div>";
-            }
-          } else {
-            echo "<div class='alert alert-danger role='alert'>
+              }
+            } else {
+              echo "<div class='alert alert-danger role='alert'>
                 Esse link de ativação é inválido.
             </div>
             <br>
             <a class='btn btn-primary' href='../index.html'>Voltar</a>";
+            }
           }
         }
-      }
-      ?>
-      <div id='carregando' align="center"></div>
-      <div id='processa_form'></div>
+        ?>
+        <div id='carregando' align="center"></div>
+        <div id='processa_form'></div>
+      </div>
     </div>
-  </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -71,10 +69,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-
-  </script>
 </body>
 
 </html>
