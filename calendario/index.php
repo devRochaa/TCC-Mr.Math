@@ -20,6 +20,23 @@
 <?php
 include("../navbar.php");
 include("../conexao.php");
+$id = $_SESSION['id'];
+
+$sql = "SELECT titulo, data FROM calendario where id_usuario = $id";
+$result = mysqli_query($conexao, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+  $data_formatada = date('m/d/Y', strtotime($row['data']));
+  $evento[] = [
+    "date" => $data_formatada,
+    "title" => $row['titulo'],
+  ];
+}
+
+$json = json_encode($evento, JSON_UNESCAPED_UNICODE);
+
+// Substituir aspas duplas por aspas escapadas
+$json_escaped = addslashes($json);
 ?>
 <div class="tela">
 
@@ -83,6 +100,10 @@ include("../conexao.php");
 
       <button class='botao' id="deleteButton">Deletar</button>
       <button class='botao' id="closeButton">Fechar</button>
+      <script>
+        var events = JSON.parse("<?php echo $json_escaped; ?>"); // Atualize o valor de 'events' com o JSON gerado pelo PHP
+        console.log(events);
+      </script>
     </div>
 
     <div id="modalBackDrop"></div>
@@ -92,11 +113,9 @@ include("../conexao.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../js/calendario.js"></script>
-    <script src="../js/darkMode.js"></script>
-    <script>
-      console.log(data, titulo);
-    </script>
+
+    <script src="../js/calendario.js?=<?php echo time(); ?>"></script>
+    <script src="../js/darkMode.js?=<?php echo time(); ?>"></script>
 </div>
 </body>
 

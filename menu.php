@@ -13,7 +13,7 @@ ob_start();
 </head>
 <body>
     <?php
-
+    
     include("navbarH.php");
     if (!isset($_SESSION["usuario"])) {
         header("location: index.html");
@@ -29,6 +29,7 @@ ob_start();
     $result = $conexao->query($sql);
     while ($row = $result->fetch_assoc()) {
         $id = $row['id'];
+        $_SESSION['id'] = $id;
     }
 
     $sql = "SELECT aulas_assistidas, ex_feitos FROM desempenho where id_usuarios = $id";
@@ -45,7 +46,7 @@ ob_start();
     $sql = "SELECT id from exercicios";
     $resultado = mysqli_query($conexao, $sql);
     $qtd_exercicios = mysqli_affected_rows($conexao);
-    
+   
     ?>
 
     <div class="corpo">
