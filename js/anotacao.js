@@ -10,15 +10,17 @@ adicionarBtn.addEventListener('click', () => adicionarNovaNota());
 
 function adicionarNovaNota(texto = '') {
     const nota = document.createElement('div');
+    const tela = document.getElementById('tela');
+
 
     nota.classList.add('nota');
 
     nota.innerHTML = `
         <div class="configuracao">
-            <button class="editar hidden">
+            <button class="editar">
                 <i class="fas fa-edit" ></i>
             </button>
-            <button class="confirmar">
+            <button class="confirmar hidden">
                 <i class="fa-solid fa-check"></i>
             </button>
             <button class="deletar">
@@ -53,11 +55,11 @@ function adicionarNovaNota(texto = '') {
     });
 
     btnEditar.addEventListener('click', () => {
-        btnConfirmar.classList.remove('hidden');
-        btnEditar.classList.add('hidden');
+        btnConfirmar.classList.toggle('hidden');
+        btnEditar.classList.toggle('hidden');
         main.classList.toggle('hidden');
         textArea.classList.toggle('hidden');
-        
+
     });
 
     textArea.addEventListener('input', (e) => {
@@ -68,7 +70,7 @@ function adicionarNovaNota(texto = '') {
         storage();
     })
 
-    document.body.appendChild(nota);
+    tela.appendChild(nota);
 }
 
 function storage() {
@@ -78,5 +80,5 @@ function storage() {
 
     notasTexto.forEach(nota => notas.push(nota.value));
 
-    localStorage.setItem('notas', JSON.stringify(notas)); 
+    localStorage.setItem('notas', JSON.stringify(notas));
 }

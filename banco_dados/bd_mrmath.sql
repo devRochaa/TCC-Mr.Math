@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Tempo de geração: 25/09/2024 às 13:03
--- Versão do servidor: 8.2.0
--- Versão do PHP: 8.2.13
+-- Host: 127.0.0.1
+-- Tempo de geração: 17/11/2024 às 04:17
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,15 +27,12 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `alternativas`
 --
 
-DROP TABLE IF EXISTS `alternativas`;
-CREATE TABLE IF NOT EXISTS `alternativas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `esta_correto` char(3) COLLATE utf8mb4_general_ci NOT NULL,
-  `conteudo` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_questao` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_questao` (`id_questao`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `alternativas` (
+  `id` int(11) NOT NULL,
+  `esta_correto` char(3) NOT NULL,
+  `conteudo` varchar(1000) NOT NULL,
+  `id_questao` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `alternativas`
@@ -79,30 +76,56 @@ INSERT INTO `alternativas` (`id`, `esta_correto`, `conteudo`, `id_questao`) VALU
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `calendario`
+--
+
+CREATE TABLE `calendario` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `titulo` varchar(30) NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `calendario`
+--
+
+INSERT INTO `calendario` (`id`, `id_usuario`, `titulo`, `data`) VALUES
+(3, 27, '12313', '2024-10-18'),
+(4, 27, '1231', '2024-10-01'),
+(5, 27, 'tchau', '2024-10-17'),
+(6, 27, 'das', '2024-10-03'),
+(23, 27, 'dasda', '2024-10-03'),
+(24, 27, 'adasds', '2024-11-01'),
+(25, 27, '23123', '2024-10-19'),
+(26, 27, '231223', '2024-10-02'),
+(27, 27, 'é hoje', '2024-11-13');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `desempenho`
 --
 
-DROP TABLE IF EXISTS `desempenho`;
-CREATE TABLE IF NOT EXISTS `desempenho` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `aulas_assistidas` int NOT NULL,
-  `acertos` int NOT NULL,
-  `ex_feitos` int NOT NULL,
-  `id_usuarios` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_usuarios` (`id_usuarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `desempenho` (
+  `id` int(11) NOT NULL,
+  `aulas_assistidas` int(11) NOT NULL,
+  `acertos` int(11) NOT NULL,
+  `ex_feitos` int(11) NOT NULL,
+  `id_usuarios` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `desempenho`
 --
 
 INSERT INTO `desempenho` (`id`, `aulas_assistidas`, `acertos`, `ex_feitos`, `id_usuarios`) VALUES
-(26, 7, 0, 49, 27),
-(27, 0, 0, 0, 28),
+(26, 7, 1, 11, 27),
 (28, 0, 0, 0, 29),
 (29, 0, 0, 0, 30),
-(35, 0, 0, 0, 36);
+(44, 0, 0, 0, 45),
+(45, 1, 1, 3, 46),
+(46, 0, 0, 0, 47);
 
 -- --------------------------------------------------------
 
@@ -110,16 +133,13 @@ INSERT INTO `desempenho` (`id`, `aulas_assistidas`, `acertos`, `ex_feitos`, `id_
 -- Estrutura para tabela `exercicios`
 --
 
-DROP TABLE IF EXISTS `exercicios`;
-CREATE TABLE IF NOT EXISTS `exercicios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_materia` int NOT NULL,
-  `codigo_ex` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `enunciado` varchar(1600) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_imagem` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_imagem` (`id_imagem`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `exercicios` (
+  `id` int(11) NOT NULL,
+  `id_materia` int(11) NOT NULL,
+  `codigo_ex` varchar(6) NOT NULL,
+  `enunciado` varchar(1600) NOT NULL,
+  `id_imagem` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `exercicios`
@@ -146,13 +166,11 @@ INSERT INTO `exercicios` (`id`, `id_materia`, `codigo_ex`, `enunciado`, `id_imag
 -- Estrutura para tabela `imagens`
 --
 
-DROP TABLE IF EXISTS `imagens`;
-CREATE TABLE IF NOT EXISTS `imagens` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `dados_base64` longtext COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `imagens` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `dados_base64` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `imagens`
@@ -183,13 +201,11 @@ INSERT INTO `imagens` (`id`, `nome`, `dados_base64`) VALUES
 -- Estrutura para tabela `materia`
 --
 
-DROP TABLE IF EXISTS `materia`;
-CREATE TABLE IF NOT EXISTS `materia` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `descricao` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `materia` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `descricao` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `materia`
@@ -207,34 +223,33 @@ INSERT INTO `materia` (`id`, `nome`, `descricao`) VALUES
 -- Estrutura para tabela `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-  `sobrenome` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `senha` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
-  `rm` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `telefone` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
-  `bio` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `pfp` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `hash` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(40) NOT NULL,
+  `sobrenome` varchar(40) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `senha` varchar(60) NOT NULL,
+  `rm` varchar(6) NOT NULL,
+  `telefone` varchar(11) NOT NULL,
+  `bio` varchar(200) DEFAULT NULL,
+  `pfp` varchar(100) DEFAULT NULL,
+  `hash` varchar(100) NOT NULL,
   `data_cadastro` datetime NOT NULL,
   `ativacao` datetime NOT NULL,
-  `status` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` varchar(10) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `rm`, `telefone`, `bio`, `pfp`, `hash`, `data_cadastro`, `ativacao`, `status`) VALUES
-(27, 'Daniel', 'Rocha', 'danielrocha.etec@gmail.com', 'b5ea8985533defbf1d08d5ed2ac8fe9b', '', '14981250776', 'Oi, eu sou Daniel Rocha um dos desenvolvedores desse belo site!', NULL, '22868F6', '2024-09-21 22:05:03', '0000-00-00 00:00:00', ''),
-(28, 'Ricardo', 'Mazzo', 'danieloliveirabr00@gmail.com', 'f2a46c2e2f0b81c20b9ed0a7643d179f', '', '', NULL, NULL, '58C5471', '2024-09-21 22:11:14', '0000-00-00 00:00:00', ''),
-(29, 'Pedro', 'Paraizo', 'pedro.paraizo07@gmail.com', '3381201426ad639bbd934a8949fbcf52', '', '', NULL, NULL, 'B016878', '2024-09-21 22:15:16', '0000-00-00 00:00:00', ''),
-(30, 'Caetano', 'Sardinha', 'molinacaetano8@gmail.com', '2a29955ba13d7ab63dd457a54a663a19', '', '14998521854', '', NULL, 'AC78A7A', '2024-09-24 10:22:52', '0000-00-00 00:00:00', ''),
-(36, 'c', 'Thais', 'potolino456@gmail.com', 'f22ec1d41faa3ef03ec8be2c7d8371e1', '', '', '', NULL, '', '2024-09-24 11:56:20', '2024-09-24 11:57:41', '2');
+(27, 'Daniel', 'Rocha', 'danielrocha.etec@gmail.com', 'd360b50fd20de281e365a5754e7b201e', '', '14981250776', 'Oi, eu sou Daniel Rocha um dos desenvolvedores desse belo site!', NULL, '22868F6', '2024-09-21 22:05:03', '0000-00-00 00:00:00', '2'),
+(29, 'Pedro', 'Paraizo', 'pedro.paraizo07@gmail.com', '3381201426ad639bbd934a8949fbcf52', '', '', NULL, NULL, 'B016878', '2024-09-21 22:15:16', '0000-00-00 00:00:00', '1'),
+(30, 'Caetano', 'Sardinha', 'molinacaetano8@gmail.com', '2a29955ba13d7ab63dd457a54a663a19', '', '14998521854', '', NULL, 'AC78A7A', '2024-09-24 10:22:52', '0000-00-00 00:00:00', '1'),
+(45, 'Ana', 'Luiza', 'ana123ana@gmail.com', '6bb56aec10d153dee54136cfb7ddbec7', '', '', NULL, NULL, 'D32BB27', '2024-10-21 20:55:07', '0000-00-00 00:00:00', '1'),
+(46, 'chatonilda', 'Rocha', 'analu15162@gmail.com', '6bb56aec10d153dee54136cfb7ddbec7', '', '', '', NULL, '', '2024-10-21 20:55:51', '2024-10-21 20:56:32', '2'),
+(47, '13123', '1231231', 'daniel@gmail.com', 'b5ea8985533defbf1d08d5ed2ac8fe9b', '', '', NULL, NULL, 'BB64FA7', '2024-10-22 19:07:44', '0000-00-00 00:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -242,15 +257,13 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `rm`, `tele
 -- Estrutura para tabela `videos`
 --
 
-DROP TABLE IF EXISTS `videos`;
-CREATE TABLE IF NOT EXISTS `videos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome_video` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `link` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_materia` int NOT NULL,
-  `descricao` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `videos` (
+  `id` int(11) NOT NULL,
+  `nome_video` varchar(100) NOT NULL,
+  `link` varchar(11) NOT NULL,
+  `id_materia` int(11) NOT NULL,
+  `descricao` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `videos`
@@ -264,6 +277,113 @@ INSERT INTO `videos` (`id`, `nome_video`, `link`, `id_materia`, `descricao`) VAL
 (22, '03 - As Ordens na Parte Decimal de um Número', 'Yg4kyqG4qoI', 18, 'Lembre-se: A aplicação é essencial aos estudos '),
 (23, '04 - Decomposição numérica no sistema decimal', 'FFOT7nQkDoU', 18, 'Lembre-se: A aplicação é essencial aos estudos '),
 (24, '05 - Decomposição Numérica - Exemplo B', '4LWEcArOFpI', 18, 'Lembre-se: A aplicação é essencial aos estudos!');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `alternativas`
+--
+ALTER TABLE `alternativas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_questao` (`id_questao`);
+
+--
+-- Índices de tabela `calendario`
+--
+ALTER TABLE `calendario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `desempenho`
+--
+ALTER TABLE `desempenho`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuarios` (`id_usuarios`);
+
+--
+-- Índices de tabela `exercicios`
+--
+ALTER TABLE `exercicios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_imagem` (`id_imagem`);
+
+--
+-- Índices de tabela `imagens`
+--
+ALTER TABLE `imagens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `materia`
+--
+ALTER TABLE `materia`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `alternativas`
+--
+ALTER TABLE `alternativas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT de tabela `calendario`
+--
+ALTER TABLE `calendario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de tabela `desempenho`
+--
+ALTER TABLE `desempenho`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT de tabela `exercicios`
+--
+ALTER TABLE `exercicios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT de tabela `imagens`
+--
+ALTER TABLE `imagens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT de tabela `materia`
+--
+ALTER TABLE `materia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT de tabela `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restrições para tabelas despejadas

@@ -60,10 +60,10 @@ $("#cadastrar").click(function () {
     case $("#sobrenome").val().length < 2:
       swal("Sobrenome inválido!", "Insira um sobrenome válido", "error");
       break;
-    
+
     case verificarPalavroes($("#sobrenome").val()) === false:
       swal("Sobrenome inválido!", "Cuidado com o que você escreve", "error");
-    break;
+      break;
 
     case !validateEmail(email):
       swal("E-mail inválido!", "Insira um e-mail válido", "error");

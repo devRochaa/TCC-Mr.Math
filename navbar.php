@@ -10,7 +10,7 @@ include("admin.php");
     <span class="bottom_line common"></span>
   </div>
 
-  <div class="slide">
+  <div id="slide" class="slide">
     <h1 class="menu-h1">MENU</h1>
     <ul>
       <li><a class="burguer" href="../menu.php"><i class="fas fa-tv"></i>Inicio</a></li>
@@ -36,6 +36,3 @@ include("admin.php");
     <li id="link"><a href="../profile.php"><span class="material-symbols-outlined">account_circle</span></a></li>
   </ul>
 </div>
-<script>
-
-</script>

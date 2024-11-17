@@ -25,7 +25,7 @@
           </div>
           <div class="textfield">
             <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha" placeholder="senha">
+            <input type="password" name="senha" id="senha" placeholder="Senha">
           </div>
           <button type="submit" class="btn-login" id="entrar">LOGIN</button>
         </form>

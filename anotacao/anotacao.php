@@ -15,9 +15,8 @@
 <body>
     <?php
     include("../navbar.php");
-
     ?>
-    <div class="tela">
+    <div id="tela">
         <button class="adicionar" id="adicionar">
             <i class="fas fa-plus"></i> Nova Anotação
         </button>
@@ -37,9 +36,10 @@
         </div> -->
 
         <!--https://cdnjs.com/-->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js" integrity="sha512-OA0KzIFyfjEiECfdTeeqyDa++XmSLWyIBr8bWf2lpdv3qNr2TxpR9uaL2fKaz/Nz35kVVPEagjhWdWat/khWXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../js/anotacao.js?=<?php echo time(); ?>"></script>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js" integrity="sha512-OA0KzIFyfjEiECfdTeeqyDa++XmSLWyIBr8bWf2lpdv3qNr2TxpR9uaL2fKaz/Nz35kVVPEagjhWdWat/khWXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../js/anotacao.js?=<?php echo time(); ?>"></script>
 </body>
 
 </html>

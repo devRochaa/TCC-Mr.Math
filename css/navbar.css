@@ -12,9 +12,9 @@ body {
 }
 
 .slide {
-    height: 150%;
+    height: 100vh;
     width: 275px;
-    position: absolute;
+    position: fixed;
     background-color: #1E38E6;
     transition: 0.5s ease;
     transform: translateX(-275px);
@@ -61,7 +61,7 @@ ul li a i {
 }
 
 .toggle {
-    position: absolute;
+    position: fixed;
     height: 30px;
     width: 40px;
     top: 21px;

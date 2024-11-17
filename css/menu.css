@@ -11,6 +11,25 @@ body {
     background-color: white;
 }
 
+
+.central-div {
+    width: 50%; /* Aumente a largura para 50% */
+    background-color: #ededed;
+    box-shadow: 10px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 30px; /* Aumenta o padding para dar mais espaço ao conteúdo */
+    text-align: center;
+    margin-top: 20px; /* Adiciona espaço entre os elementos anteriores */
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
 .slide {
     height: 100%;
     width: 275px;
@@ -250,6 +269,8 @@ input:checked ~ .slide {
         .corpo {
             width: 90%;
         }
+        .central-div {
+            width: 80%; /* Mais estreita para telas pequenas */
         
         .box-aulas, .box-questoes {
             width: 100%;

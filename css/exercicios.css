@@ -70,6 +70,7 @@ body {
     background-color: blue;
     color: white;
     cursor: pointer;
+    transition: ease-in-out 0.2s;
 }
 
 .submit-button:hover, .next-button:hover {
@@ -94,4 +95,65 @@ body {
 
 .corpo{
     text-align: center;
+}
+
+.show-button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(18, 151, 25);
+    color: white;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+    
+}
+
+.show-button:hover{
+    background-color: rgb(19, 110, 22);
+}
+
+.updiv{
+    width: 75vw;
+    height: 80vh;
+    background-color: rgb(240, 240, 240);
+    border-radius: 3vh;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    display: none; /* Inicialmente invisível */
+    z-index: 2; /* A div ficará acima do botão */
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: aparecer 1s forwards; /* Aplica a animação */
+}
+
+.close-button{
+    margin-top: 1vw;
+    cursor: pointer;
+    border: 0;
+    color: rgb(150, 150, 150);
+    transition: ease-in-out 0.2s;
+}
+
+.close-button:hover{
+    margin-top: 1vw;
+    cursor: pointer;
+    border: 0;
+    color: rgb(0, 0, 0);
+}
+
+
+.button:active{
+    background-color:rgb(9, 9, 75);
+}
+
+@keyframes aparecer {
+    0% {
+        transform: translate(-50%, -300%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
 }

@@ -12,7 +12,11 @@
     }
 
 /*VVV INFO CONTAINER VVV */
-
+#result{
+    width: 5%;
+    position: absolute;
+    margin-left: 92%;
+}
 
 .info-container{
     display: block;

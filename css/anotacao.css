@@ -9,13 +9,18 @@
     --green: #1e38e6;
 }
 
-.tela {
-    margin: 0;
+#tela {
+    overflow-y: auto;
     flex-wrap: wrap;
     display: flex;
+    justify-content: center; 
     background-color: #eeeeee;
-}
+    height: 100vh;
 
+}
+::-webkit-scrollbar {
+    width: 0px;
+  }
 .adicionar {
     position: fixed;
     top: 5rem;
@@ -64,6 +69,7 @@
 
 .main {
     padding: 20px;
+    white-space: pre-wrap;  
 }
 
 .hidden {

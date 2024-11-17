@@ -3,6 +3,7 @@ ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +12,33 @@ ob_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/menu.css?=<?php echo time(); ?>">
 </head>
+
 <body>
     <?php
-    
     include("navbarH.php");
-    if (!isset($_SESSION["usuario"])) {
-        header("location: index.html");
-        exit();
-    }
-    include("conexao.php");
+
 
     $logado = $_SESSION["usuario"];
     $nome = $_SESSION['nome'];
-    
+
+
 
     $sql = "SELECT id from usuarios where email = '$logado'";
     $result = $conexao->query($sql);
     while ($row = $result->fetch_assoc()) {
-        $id = $row['id'];
+        $id = $row['id'];                                           //ID
         $_SESSION['id'] = $id;
     }
+
+    $sql = "SELECT data from calendario where id_usuario = '$id'";
+    $result = $conexao->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        if (date("Y-m-d") == $row['data']) {
+            echo 'é hoje';
+        }
+    }
+
+
 
     $sql = "SELECT aulas_assistidas, ex_feitos FROM desempenho where id_usuarios = $id";
     $result = $conexao->query($sql);
@@ -46,37 +54,49 @@ ob_start();
     $sql = "SELECT id from exercicios";
     $resultado = mysqli_query($conexao, $sql);
     $qtd_exercicios = mysqli_affected_rows($conexao);
-   
+
     ?>
 
-    <div class="corpo">
-        <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
-        <hr>
-        <div class="banner">
-            <img class="banner_img" src="img/banner_inicial.png">
-        </div>
-        <div class="box-aulas">
-            <div class="barra-aulas">
-                <h2>Aulas Assisitidas</h2>
-                <div id="porcentagem-aula">
-                    <h3 id="porcentagem-aula-text"></h3>
+    <div class="container">
+        <div class="corpo">
+            <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
+            <hr>
+            <div class="banner">
+                <img class="banner_img" src="img/banner_inicial.png">
+            </div>
+            <div class="box-aulas">
+                <div class="barra-aulas">
+                    <h2>Aulas Assisitidas</h2>
+                    <div id="porcentagem-aula">
+                        <h3 id="porcentagem-aula-text"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="box-questoes">
+                <div class="barra-questoes">
+                    <h2>Questões Feitas</h2>
+                    <div id="porcentagem-questoes">
+                        <h3 id="porcentagem-questoes-text"></h3>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="box-questoes">
-            <div class="barra-questoes">
-                <h2>Questões Feitas</h2>
-                <div id="porcentagem-questoes">
-                    <h3 id="porcentagem-questoes-text"></h3>
-                </div>
+
+        <div class="central-container">
+            <div class="central-div">
+                <h2>Div Centralizada</h2>
+                <p>Esta é uma div estilizada, com fundo branco, sombra e bordas arredondadas.</p>
             </div>
-        </div>  
+        </div>
     </div>
+    <?php
+
+    ?>
 
     <script>
         var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
         var ex_feitos = "<?php echo $ex_feitos; ?>";
-        var total_aulas = "<?php echo $qtd_videos;?> ";
+        var total_aulas = "<?php echo $qtd_videos; ?> ";
         var total_ex = "<?php echo $qtd_exercicios; ?>";
 
 
@@ -95,8 +115,7 @@ ob_start();
             textoPorcentagemQuestoes.innerText = Math.pow(parseInt(percentualQ), 1) + "%";
         }
         atualizarBarra(aulas_porcentagem, ex_porcentagem);
-
-        
     </script>
 </body>
+
 </html>

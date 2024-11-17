@@ -43,6 +43,12 @@
       <label class="lbl" for="enunciado">Enunciado do exercício:</label>
       <input type="text" name="enunciado" maxlength="1600" placeholder="matemática..." required>
 
+      <br><br>
+
+      <input type="file" id="fileInput" name="imagem" disabled>
+      <br>
+      <button type="button" id="toggleButton">Ativar Envio de Arquivos</button>
+
       <br>
       <br>
 
@@ -63,11 +69,11 @@
       <br>
       <br>
 
-      <input type="file" id="fileInput" name="imagem" disabled>
-      <button type="button" id="toggleButton">Ativar Envio de Arquivos</button>
+      <label>Correção do exercício por imagem:</label>
+      <input type="file" id="fileInput2" name="imagem">
+      <br>
 
-      <br>
-      <br>
+
       <button type="submit" name="acao">Cadastre exercício</button>
     </form>
   </div>
@@ -85,6 +91,7 @@
           toggleButton.textContent = 'Ativar Envio de Arquivos';
         }
       });
+
 
       function getLetter(index) {
         // Converte um índice numérico para a letra correspondente do alfabeto (A, B, C, ...)
