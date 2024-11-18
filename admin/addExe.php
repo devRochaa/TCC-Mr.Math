@@ -58,7 +58,7 @@
       <button type="submit" name="acao" class="button-addex-submit">Cadastrar exercício</button>
     </form>
   </div>
-  <script src="../js/addex.js"></script>
+  <script src="../js/addex.js?=<?php echo time(); ?>"></script>
 </body>
 
 </html>

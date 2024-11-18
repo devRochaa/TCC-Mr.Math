@@ -79,6 +79,9 @@ if ($result->num_rows > 0) {
 // Cria o código baseado na matéria
 $code = "MAT" . $id; // Ajuste conforme necessário
 
+// Verifica o conteúdo do POST (incluindo as alternativas)
+// Verifica se as alternativas estão sendo enviadas corretamente
+
 // Cria uma lista para as alternativas
 $alternativas = [];
 $letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
@@ -89,9 +92,18 @@ foreach ($letras as $letra) {
   }
 }
 
+
+// Verifica se a variável de resposta está definida
+if (isset($_POST['resposta'])) {
+  echo "Resposta: " . $_POST['resposta']; // Verifica se a resposta foi recebida corretamente
+} else {
+  echo "Resposta não fornecida!";
+}
+
 // Prepara a inserção do exercício com a correção associada (id_correcao e id_imagem)
-$sql = "INSERT INTO exercicios (id_materia, codigo_ex, enunciado, id_imagem, correcao_link) 
-        VALUES ($id, '$code', '$enunciado', " . ($id_imagem ? $id_imagem : 'NULL') . ", '$correcaolink')";
+$sql = "INSERT INTO exercicios (id_materia, codigo_ex, enunciado, id_imagem, correcao_link, id_correcao) 
+        VALUES ($id, '$code', '$enunciado', " . ($id_imagem ? $id_imagem : 'NULL') . ", '$correcaolink', " . ($id_correcao ? $id_correcao : 'NULL') . ")";
+
 
 // Insere o exercício no banco de dados
 if (mysqli_query($conexao, $sql)) {
@@ -99,16 +111,19 @@ if (mysqli_query($conexao, $sql)) {
 
   // Agora insira as alternativas com o id_correcao (se houver)
   foreach ($alternativas as $letra => $texto) {
-    $esta_correto = ($letra === $_POST['resposta']) ? 'sim' : 'não'; // Verifica se é a alternativa correta
-    $sql_alt = "INSERT INTO alternativas (conteudo, esta_correto, id_questao, id_correcao) 
-                    VALUES ('$texto', '$esta_correto', $id_questao, " . ($id_correcao ? $id_correcao : 'NULL') . ")";
-
-    if (!mysqli_query($conexao, $sql_alt)) {
+    $esta_correto = ($letra == $_POST['resposta']) ? 'sim' : 'não';
+    // Verifica se é a alternativa correta
+    $sql_alt = "INSERT INTO alternativas (conteudo, esta_correto, id_questao) 
+            VALUES ('$texto', '$esta_correto', $id_questao)";
+    if (mysqli_query($conexao, $sql_alt)) {
+      echo "Alternativa $letra salva com sucesso!"; // Verifica se a alternativa foi salva
+    } else {
       echo "Erro ao salvar a alternativa $letra: " . mysqli_error($conexao);
     }
   }
 
   echo "Upload e salvamento foram feitos com sucesso!";
+  header('Location: addExe.php');
 } else {
   echo "Erro ao salvar no banco de dados: " . $conexao->error;
 }

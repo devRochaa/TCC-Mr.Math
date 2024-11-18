@@ -8,6 +8,7 @@ if (isset($_SESSION['id_materia'])) {
     $sql = "SELECT 
             e.id AS id_questao, 
             e.enunciado AS questao, 
+            e.id_correcao, e.id_imagem, e.correcao_link,
             a.conteudo AS alternativa, 
             a.esta_correto AS correto 
         FROM alternativas a 
@@ -35,6 +36,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             // Adiciona a questão ao quiz
             $quiz[] = [
                 "questao" => $current_questao['questao'],
+                "id_imagem" => $current_questao['id_imagem'],
+                "id_correcao" => $current_questao['id_correcao'],
+                "correcao_link" => $current_questao['correcao_link'],
                 "alternativasErradas" => $current_alternativas['alternativasErradas'],
                 "alternativaCorreta" => $current_alternativas['alternativaCorreta']
             ];
@@ -42,7 +46,10 @@ while ($row = mysqli_fetch_assoc($result)) {
         // Reseta para a nova questão
         $current_questao = [
             "id_questao" => $row['id_questao'],
-            "questao" => $row['questao']
+            "questao" => $row['questao'],
+            "id_imagem" => $row['id_imagem'],  // Adiciona id_imagem
+            "id_correcao" => $row['id_correcao'],  // Adiciona id_correcao
+            "correcao_link" => $row['correcao_link']  // Adiciona link (ou correcao_link)
         ];
         $current_alternativas = [
             "alternativasErradas" => [],
@@ -62,6 +69,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 if ($current_questao !== null) {
     $quiz[] = [
         "questao" => $current_questao['questao'],
+        "id_imagem" => $current_questao['id_imagem'],
+        "id_correcao" => $current_questao['id_correcao'],
+        "correcao_link" => $current_questao['correcao_link'],
         "alternativasErradas" => $current_alternativas['alternativasErradas'],
         "alternativaCorreta" => $current_alternativas['alternativaCorreta']
     ];

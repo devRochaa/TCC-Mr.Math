@@ -32,17 +32,59 @@
         </div>
 
         <button id="next-question" class="next-button" onclick="showNextQuestion()">Próxima Questão</button>
+        <button id="show-button" class="show-button" hidden>Mostrar Correção</button>
+
+        <div id="updiv" class="updiv">
+            <button class="close-button" onclick="document.getElementById('updiv').style.display = 'none'"><i class="fa-regular fa-circle-xmark fa-2x"></i></button>
+        </div>
+
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
+        function fetchImageBase64(id_imagem, questionElement) {
+            $.ajax({
+                type: 'POST',
+                url: 'api_imagem.php', // Endpoint onde o PHP irá buscar a imagem
+                data: {
+                    id: id_imagem
+                }, // Envia o ID da imagem
+                dataType: 'json', // Espera uma resposta JSON
+                success: function(response) {
+                    // Verifica se a resposta contém a base64
+                    if (response.imageBase64) {
+                        // Cria a tag de imagem no HTML
+                        const imageElement = document.createElement('img');
+                        imageElement.src = 'data:image/jpeg;base64,' + response.imageBase64;
+                        imageElement.alt = 'Imagem da questão';
+                        imageElement.classList.add('question-image'); // Classe para estilizar a imagem (opcional)
+
+                        // Adiciona a imagem ao container da questão específica, antes das alternativas
+                        questionElement.insertBefore(imageElement, questionElement.querySelector('.answer-input') || null);
+                    } else {
+                        console.log('Imagem não encontrada ou não retornada corretamente.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erro ao buscar imagem:', error);
+                }
+            });
+        }
+
         let score = 0;
         let currentQuestionIndex = 0;
 
         const quizContainer = document.getElementById('quiz-container');
         const scoreDisplay = document.getElementById('score');
         const nextButton = document.getElementById('next-question');
+        const mostrarButton = document.getElementById('show-button');
+        const updiv = document.getElementById("updiv");
+
+        mostrarButton.addEventListener('click', function() {
+            updiv.style.display = 'block'
+        })
 
         // Carrega as questões de um arquivo JSON
         async function loadQuestions() {
@@ -60,13 +102,19 @@
             quizData.forEach((questionData, index) => {
                 const questionElement = document.createElement('div');
                 questionElement.classList.add('question');
-                if (index === 0) questionElement.classList.add('active');
+                if (index === 0) questionElement.classList.add('active'); // Apenas a primeira questão será visível inicialmente
 
                 const questionTitle = document.createElement('h3');
                 questionTitle.classList.add('question-title');
                 questionTitle.textContent = `${index + 1}. ${questionData.questao}`;
                 questionElement.appendChild(questionTitle);
 
+                // Chama a função para carregar a imagem com o ID da imagem da questão, mas coloca ela antes das alternativas
+                if (questionData.id_imagem) {
+                    fetchImageBase64(questionData.id_imagem, questionElement);
+                }
+
+                // Criação das alternativas
                 const allAnswers = [...questionData.alternativasErradas, questionData.alternativaCorreta];
                 shuffleArray(allAnswers);
 
@@ -87,7 +135,6 @@
 
                     questionElement.appendChild(input);
                     questionElement.appendChild(label);
-
                 });
 
                 const submitButton = document.createElement('button');
@@ -122,6 +169,7 @@
             }
 
             button.disabled = true;
+            mostrarButton.hidden = false;
 
             inputs.forEach(input => {
                 const label = input.nextElementSibling;
@@ -139,13 +187,17 @@
             const correctAnswerText = document.querySelectorAll('.correct-answer')[questionIndex];
             correctAnswerText.classList.remove('hidden');
 
+
             if (userAnswer === questionData.alternativaCorreta) {
                 score++;
                 scoreDisplay.textContent = score;
             }
 
+
             nextButton.style.display = 'block';
         }
+
+
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -177,22 +229,22 @@
                     },
                     success: function(response) {
                         swal({
-                    title: "Você completou os exercícios!",
-                    text: "Suas respostas foram salvas.",
-                    icon: "success",
-                    })
-                    .then((willDelete) => {
-                    // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
-                    if (willDelete) {
-                        window.location="selecionarEx.php"
-                    }
-                    });
+                                title: "Você completou os exercícios!",
+                                text: "Suas respostas foram salvas.",
+                                icon: "success",
+                            })
+                            .then((willDelete) => {
+                                // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
+                                if (willDelete) {
+                                    window.location = "selecionarEx.php"
+                                }
+                            });
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText); // Log de erro no console
                     }
                 });
-                
+
             }
 
             nextButton.style.display = 'none';

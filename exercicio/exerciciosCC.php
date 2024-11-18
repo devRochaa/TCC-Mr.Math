@@ -32,13 +32,6 @@
         </div>
 
         <button id="next-question" class="next-button" onclick="showNextQuestion()">Próxima Questão</button>
-        <button id="show-button" class="show-button" hidden >Mostrar Correção</button>
-        
-        <div id="updiv" class="updiv">
-        <button class="close-button" onclick="document.getElementById('updiv').style.display = 'none'"><i class="fa-regular fa-circle-xmark fa-2x"></i></button>
-        </div>
-
-
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -50,10 +43,6 @@
         const quizContainer = document.getElementById('quiz-container');
         const scoreDisplay = document.getElementById('score');
         const nextButton = document.getElementById('next-question');
-        const mostrarButton = document.getElementById('show-button');
-        const updiv = document.getElementById("updiv");
-
-        mostrarButton.addEventListener('click', function() {updiv.style.display='block'})
 
         // Carrega as questões de um arquivo JSON
         async function loadQuestions() {
@@ -133,7 +122,6 @@
             }
 
             button.disabled = true;
-            mostrarButton.hidden = false;
 
             inputs.forEach(input => {
                 const label = input.nextElementSibling;
@@ -150,18 +138,14 @@
 
             const correctAnswerText = document.querySelectorAll('.correct-answer')[questionIndex];
             correctAnswerText.classList.remove('hidden');
-            
 
             if (userAnswer === questionData.alternativaCorreta) {
                 score++;
                 scoreDisplay.textContent = score;
             }
 
-
             nextButton.style.display = 'block';
         }
-
-        
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
