@@ -254,12 +254,12 @@ input:checked ~ .slide {
 
     .banner_img {
         width: 100%;
-        height: 40vh;
+        height: 45vh;
         border-radius: 8px;
     }
     .banner{
         width: 100%;
-        height: 40vh;
+        height: 45vh;
         margin: 20px auto;
         border-radius: 10px;
         background-color: #1E38E6;

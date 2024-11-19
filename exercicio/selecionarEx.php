@@ -22,7 +22,7 @@
 
   $sim = 'nao';
 
-  $sql = "SELECT nome,id, descricao FROM materia";
+  $sql = "SELECT nome,id, descricao, thumb FROM materia";
   $result = mysqli_query($conexao, $sql);
   $materias = [];
 
@@ -30,7 +30,8 @@
     $materias[] = [
       'id' => $row['id'],
       'nome' => $row['nome'],
-      'descricao' => $row['descricao']
+      'descricao' => $row['descricao'],
+      'thumb' => $row['thumb']
     ];
   }
 
@@ -45,7 +46,11 @@
       <?php if (!empty($materias)) { ?>
         <?php foreach ($materias as $materias) { ?>
           <div class="card">
-            <img src="../img/exercicios.png">
+            <img src="<?php if ($materias['thumb']) {
+                        echo $materias['thumb'];
+                      } else {
+                        echo '../img/exercicios.png';
+                      } ?>">
             <script>
               let ipt_materia = '';
             </script>

@@ -132,47 +132,63 @@
     </div>
     </div>
 
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script src="js/profile.js"></script>
+    <script src="js/profile.js?=<?php echo time(); ?>"></script>
 
     <script>
         $("#APAGAR").click(function() {
             const ipt_apagar = $("#ipt_apagar").val();
             if (ipt_apagar === "APAGAR") {
-
-                let contador = 3;
                 Swal.fire({
-                    icon: "error",
-                    title: "Rapazinho sem valor",
-                    text: 'Sua conta vai ser apagada em ' + contador + ' segundos',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-                const intervalo = setInterval(() => {
-                    contador--;
+                    title: "Você tem certeza?",
+                    text: "Você não será capaz de reverter isso!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    cancelButtonText: "Cancele, vou continuar!",
+                    confirmButtonText: "Sim, delete..",
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                    // Atualiza o texto no SweetAlert
-                    Swal.update({
-                        text: 'Sua conta vai ser apagada em ' + contador + ' segundos',
-                    });
+                        let contador = 3;
+                        Swal.fire({
+                            icon: "error",
+                            title: "Rapazinho sem valor",
+                            text: 'Sua conta vai ser apagada em ' + contador + ' segundos',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        const intervalo = setInterval(() => {
+                            contador--;
+
+                            // Atualiza o texto no SweetAlert
+                            Swal.update({
+                                text: 'Sua conta vai ser apagada em ' + contador + ' segundos',
+                            });
 
 
-                    if (contador === 0) {
-                        clearInterval(intervalo);
-                        window.location.href = "account_process/apagar.php";
+                            if (contador === 0) {
+                                clearInterval(intervalo);
+                                window.location.href = "account_process/apagar.php";
+                            }
+                        }, 1000);
+
+                    } else {
+                        swal("Não foi possível deletar!", "APAGAR está escrito errado", "error");
                     }
-                }, 1000);
 
-            } else {
-                swal("Não foi possível deletar!", "APAGAR está escrito errado", "error");
+                });
             }
         });
-
         var senha_real = "<?php echo $usuario['senha']; ?>";
         //Após selecionar e dar ok 
 

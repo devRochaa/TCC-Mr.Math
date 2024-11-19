@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,100&display=swap');
 
 body{
+  overflow:hidden;
   margin: 0;
   font-family: "Poppins", sans-serif;
 }
@@ -11,7 +12,7 @@ body{
   font-weight: 700;
   font-style: normal;
   margin-bottom: -5vw;
-  font-size: 3em;
+  font-size: 1px;
 }
 
 .mrmath {
@@ -20,7 +21,7 @@ body{
   background-color: #ffffff;
   border-radius: 0.75vw;
   padding: 1vh;
-  font-size: 3vw;
+  font-size: 2vw;
   color: #0B1555;
   -webkit-text-stroke: 0.3vh #0B1555;
   text-transform: uppercase;
@@ -30,7 +31,7 @@ body{
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 3em;
+  font-size: 1vw;
 }
 
 
@@ -59,9 +60,9 @@ body * {
 }
 
 .left-login > h1{
-  padding: 1vw 0;
+  padding: 1.5vw 0;
   font-weight: 600;
-  font-size: 3vw;
+  font-size: 2vw;
   color: #ffffff;
 }
 
@@ -201,11 +202,55 @@ body * {
   will-change: transform;
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 1080px) {
   .card-login {
-    width: 85%;
+    width: 75%;
+  }
+
+  .left-login > h1 {
+    font-size: 4vw;
+  }
+
+  .mrmath {
+    font-size: 3vw;
   }
 }
+
+@media only screen and (max-width: 950px) {
+  .card-login {
+    width: 75%;
+  }
+
+  .left-login{
+    width: 50vw;
+  }
+
+  .left-login > h1{
+    font-size: 5vw;
+  }
+
+  .mrmath{
+    font-size: 3vw;
+  }
+
+}
+
+@media only screen and (max-width:850px) {
+
+  .main-login{
+    gap: 1.5vw;
+  }
+
+  .card-login {
+    width: 90%;
+  }
+
+  .left-login{
+    width: 45%;
+  }
+
+}
+
 
 @media only screen and (max-width:768px) {
   .left-login > h1{
@@ -221,23 +266,15 @@ body * {
 @media only screen and (max-width: 690px) {
 
   .main-login{
-    gap: 1rem;
+    gap: 4vw;
   }
 
   .left-login > h1{
-    font-size: 35px;
+    font-size: 5vw;
   }
 
   .left-login{
-    background-color: #143699;
-    border-radius: 0 3vh 3vh 0;
-    width: 47vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 10px 0 5px 10px#1e39e58f ;
+    width: 45vw;
   }
 
   .card-login {
@@ -264,22 +301,24 @@ body * {
   }
 
   .right-login {
-    justify-content: flex-start ;
-    width: 101%;
-    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
   }
 
   .left-login {
-    width: 100%;
-    height: auto;
-  }
-
-  .left-login-image {
-    width: 50vw;
+    display: none;
   }
 
   .card-login {
-    width: 90%;
+    top: 50%;  /* 50% da altura da tela */
+    left: 50%; /* 50% da largura da tela */
+    transform: translate(-50%, -50%); /* Ajusta para centralizar exatamente */
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 75vw;
   }
 }
 
@@ -287,6 +326,34 @@ body * {
   display: none;
 }
 
+@media only screen and (max-width: 460px) {
+
+  .card-login{
+    width: 75vw;
+  }
+
+}
+
 @media only screen and (max-width: 420px) {
+
+  .card-login{
+    width: 80vw;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+
+  .card-login{
+    width: 90vw;
+  }
+
+}
+
+@media only screen and (max-width: 330px) {
+
+  .card-login{
+    width: 95vw;
+  }
 
 }

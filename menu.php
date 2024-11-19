@@ -101,7 +101,13 @@ ob_start();
 
 
         var aulas_porcentagem = (aulas_assistidas / total_aulas) * 100;
+        if (aulas_porcentagem > 100) {
+            aulas_porcentagem = 100;
+        }
         var ex_porcentagem = (ex_feitos / total_ex) * 100;
+        if (ex_porcentagem > 100) {
+            ex_porcentagem = 100;
+        }
 
         function atualizarBarra(percentualA, percentualQ) {
             var barraProgressoAula = document.getElementById("porcentagem-aula");

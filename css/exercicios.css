@@ -137,33 +137,46 @@ body {
     background-color: rgb(19, 110, 22);
 }
 
-.updiv{
-    width: 75vw;
-    height: 80vh;
+.updiv {
+    position: fixed;
+    top: 10%; /* Define a posição fixa do updiv, 10% da altura da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75vw;  /* Largura fixa */
+    height: 80vh; /* Altura fixa */
     background-color: rgb(240, 240, 240);
     border-radius: 3vh;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    display: none; /* Inicialmente invisível */
-    z-index: 2; /* A div ficará acima do botão */
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: aparecer 1s forwards; /* Aplica a animação */
+    z-index: 1000; /* Garante que o updiv fique acima de outros elementos */
+    display: none; /* Inicia oculto */
+    animation: aparecer 1s forwards; /* Aplica a animação quando for mostrado */
 }
 
-.close-button{
-    margin-top: 1vw;
+
+.centered-image {
+    max-width: 90%; /* Aumenta o tamanho da imagem, mas mantém proporcional */
+    max-height: 80%; /* Ajusta para garantir que a imagem não ocupe toda a altura */
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 10%; /* Aumenta a distância entre o topo e a imagem */
+    left: 50%;
+    transform: translate(-50%, 0); /* Centraliza a imagem e não a sobrepõe ao botão de fechar */
+}
+
+
+.close-button {
+    position: absolute;
+    top: 1vw; /* Ajuste o espaço do botão no topo */
+    left: 1vw; /* Coloca o botão no canto superior direito */
     cursor: pointer;
     border: 0;
     color: rgb(150, 150, 150);
     transition: ease-in-out 0.2s;
 }
 
-.close-button:hover{
-    margin-top: 1vw;
-    cursor: pointer;
-    border: 0;
+
+.close-button:hover {
     color: rgb(0, 0, 0);
 }
 
@@ -174,9 +187,92 @@ body {
 
 @keyframes aparecer {
     0% {
-        transform: translate(-50%, -300%);
+        top: -100%; /* Começa fora da tela */
     }
     100% {
-        transform: translate(-50%, -50%);
+        top: 10%; /* Chega até 10% da altura da tela, abaixo da navbar */
     }
 }
+@media (min-width: 1920px) {
+    .updiv {
+        height: 70vh; /* Ajusta a altura para telas maiores */
+    }
+
+    @keyframes aparecer {
+        0% {
+            transform: translate(-50%, -100%); /* Ajusta para telas grandes */
+        }
+        100% {
+            transform: translate(-50%, -0%);
+        }
+    }
+}
+
+
+
+/* Responsividade para tablets e telas médias (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .updiv {
+        width: 80vw; /* Ajusta a largura para tablets */
+        height: 70vh;
+    }
+
+    @keyframes aparecer {
+        0% {
+            transform: translate(-50%, -250%);
+        }
+        100% {
+            transform: translate(-50%, -170%);
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+    .updiv {
+        width: 80vw; /* Ajusta a largura para tablets */
+        height: 70vh;
+    }
+
+    @keyframes aparecer {
+        0% {
+            transform: translate(-50%, -250%);
+        }
+        100% {
+            transform: translate(-50%, 0%);
+        }
+    }
+}
+
+/* Responsividade para celulares (max-width: 768px) */
+@media (max-width: 768px) {
+    .updiv {
+        width: 90vw; /* Ajusta a largura para celulares */
+        height: 60vh;
+    }
+
+    @keyframes aparecer {
+        0% {
+            transform: translate(-50%, -200%);
+        }
+        100% {
+            transform: translate(-50%, 0%);
+        }
+    }
+}
+
+/* Responsividade para telas muito pequenas (max-width: 480px) */
+@media (max-width: 480px) {
+    .updiv {
+        width: 95vw; /* Ajusta a largura para telas pequenas */
+        height: 50vh;
+    }
+
+    @keyframes aparecer {
+        0% {
+            transform: translate(-50%, -200%);
+        }
+        100% {
+            transform: translate(-50%, 0%);
+        }
+    }
+}   

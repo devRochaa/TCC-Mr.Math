@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="../css/exercicios.css?=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
 </head>
 
 <body>
@@ -18,11 +16,9 @@
     include("../navbar.php");
     include("../conexao.php");
 
-
     if (isset($_POST['enviar'])) {
         $id_materia = $_POST['id_materia'];
     }
-
     ?>
     <div class="corpo">
         <h1 class="main-title">Exercícios</h1>
@@ -36,32 +32,65 @@
 
         <div id="updiv" class="updiv">
             <button class="close-button" onclick="document.getElementById('updiv').style.display = 'none'"><i class="fa-regular fa-circle-xmark fa-2x"></i></button>
+            <img class="centered-image" src="">
         </div>
+
 
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
     <script>
-        function fetchImageBase64(id_imagem, questionElement) {
+        function fetchCorrectionImage(id_imagem, questionIndex) {
             $.ajax({
                 type: 'POST',
                 url: 'api_imagem.php', // Endpoint onde o PHP irá buscar a imagem
                 data: {
                     id: id_imagem
-                }, // Envia o ID da imagem
-                dataType: 'json', // Espera uma resposta JSON
+                },
+                dataType: 'json',
                 success: function(response) {
                     // Verifica se a resposta contém a base64
                     if (response.imageBase64) {
-                        // Cria a tag de imagem no HTML
+                        // Seleciona a div específica da questão atual
+                        const correctionDiv = document.querySelector(`#updiv-${questionIndex}`);
+                        const correctionImage = correctionDiv.querySelector('img');
+
+                        // Se não houver imagem na updiv, cria uma nova
+                        if (!correctionImage) {
+                            const newImage = document.createElement('img');
+                            newImage.classList.add('centered-image');
+                            correctionDiv.appendChild(newImage);
+                        }
+
+                        // Atualiza o src da imagem na updiv
+                        correctionDiv.querySelector('img').src = 'data:image/jpeg;base64,' + response.imageBase64;
+                    } else {
+                        console.log('Imagem não encontrada ou não retornada corretamente.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erro ao buscar imagem:', error);
+                }
+            });
+        }
+
+        function fetchImageBase64(id_imagem, questionElement) {
+            $.ajax({
+                type: 'POST',
+                url: 'api_imagem.php',
+                data: {
+                    id: id_imagem
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.imageBase64) {
                         const imageElement = document.createElement('img');
                         imageElement.src = 'data:image/jpeg;base64,' + response.imageBase64;
                         imageElement.alt = 'Imagem da questão';
-                        imageElement.classList.add('question-image'); // Classe para estilizar a imagem (opcional)
-
-                        // Adiciona a imagem ao container da questão específica, antes das alternativas
+                        imageElement.classList.add('question-image');
                         questionElement.insertBefore(imageElement, questionElement.querySelector('.answer-input') || null);
                     } else {
                         console.log('Imagem não encontrada ou não retornada corretamente.');
@@ -83,10 +112,18 @@
         const updiv = document.getElementById("updiv");
 
         mostrarButton.addEventListener('click', function() {
-            updiv.style.display = 'block'
-        })
+            // Exibe a updiv da questão ativa
+            const activeQuestionIndex = currentQuestionIndex;
+            const correctionDiv = document.querySelector(`#updiv-${activeQuestionIndex}`);
+            correctionDiv.style.display = 'block'; // Mostrar a updiv da correção
 
-        // Carrega as questões de um arquivo JSON
+            // Carregar a imagem de correção para a questão ativa
+            const questionData = quizData[activeQuestionIndex];
+            if (questionData.id_correcao) {
+                fetchCorrectionImage(questionData.id_correcao, activeQuestionIndex);
+            }
+        });
+
         async function loadQuestions() {
             try {
                 const response = await fetch('api.php');
@@ -97,7 +134,8 @@
             }
         }
 
-        // Função para carregar as questões no HTML
+        let correcao = {};
+
         function loadQuiz(quizData) {
             quizData.forEach((questionData, index) => {
                 const questionElement = document.createElement('div');
@@ -109,9 +147,35 @@
                 questionTitle.textContent = `${index + 1}. ${questionData.questao}`;
                 questionElement.appendChild(questionTitle);
 
-                // Chama a função para carregar a imagem com o ID da imagem da questão, mas coloca ela antes das alternativas
+                // Adicionar a div de correção única para cada questão
+                const updiv = document.createElement('div');
+                updiv.id = `updiv-${index}`;
+                updiv.classList.add('updiv');
+                updiv.style.display = 'none'; // Inicialmente escondido
+
+                // Criar e adicionar o botão de fechamento dentro da updiv
+                const closeButton = document.createElement('button');
+                closeButton.classList.add('close-button');
+                closeButton.innerHTML = '<i class="fa-regular fa-circle-xmark fa-2x"></i>';
+                closeButton.onclick = function() {
+                    updiv.style.display = 'none'; // Esconde a updiv
+                };
+
+                updiv.appendChild(closeButton); // Adiciona o botão de fechamento na updiv
+
+                questionElement.appendChild(updiv); // Adiciona a updiv ao elemento da questão
+
+                // Chama a função para carregar a imagem com o ID da imagem da questão
                 if (questionData.id_imagem) {
                     fetchImageBase64(questionData.id_imagem, questionElement);
+                }
+
+                if (questionData.correcao_link) {
+                    correcao.variavel = questionData.correcao_link;
+                }
+
+                if (questionData.id_correcao) {
+                    fetchCorrectionImage(questionData.id_correcao, index); // Passa o índice da questão para a função
                 }
 
                 // Criação das alternativas
@@ -150,9 +214,11 @@
 
                 quizContainer.appendChild(questionElement);
             });
+
+
         }
 
-        // Função para verificar a resposta
+
         function checkAnswer(questionData, questionIndex, button) {
             const inputs = document.querySelectorAll(`input[name="question${questionIndex}"]`);
             let userAnswer = '';
@@ -180,24 +246,19 @@
                     label.classList.add('wrong');
                 }
 
-                // Desmarca o input visualmente (remover o "checked" sem remover a cor)
                 input.checked = false;
             });
 
             const correctAnswerText = document.querySelectorAll('.correct-answer')[questionIndex];
             correctAnswerText.classList.remove('hidden');
 
-
             if (userAnswer === questionData.alternativaCorreta) {
                 score++;
                 scoreDisplay.textContent = score;
             }
 
-
             nextButton.style.display = 'block';
         }
-
-
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -207,6 +268,8 @@
         }
 
         function showNextQuestion() {
+
+
             const questions = document.querySelectorAll('.question');
             questions[currentQuestionIndex].classList.remove('active');
             currentQuestionIndex++;
@@ -218,10 +281,9 @@
                 const email = "<?php echo $_SESSION['usuario']; ?>";
                 const ex_feitos = currentQuestionIndex;
 
-
                 $.ajax({
                     type: 'POST',
-                    url: 'update.php', // O arquivo PHP que processa a atualização
+                    url: 'update.php',
                     data: {
                         score: score,
                         ex_feitos: currentQuestionIndex,
@@ -229,28 +291,42 @@
                     },
                     success: function(response) {
                         swal({
-                                title: "Você completou os exercícios!",
-                                text: "Suas respostas foram salvas.",
-                                icon: "success",
-                            })
-                            .then((willDelete) => {
-                                // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
-                                if (willDelete) {
-                                    window.location = "selecionarEx.php"
+                            title: "Você completou os exercícios!",
+                            text: "Suas respostas foram salvas.",
+                            icon: "success",
+                            buttons: {
+                                cancel: {
+                                    text: "Fechar",
+                                    visible: true,
+                                    closeModal: true
+                                },
+                                confirm: {
+                                    text: "Ver vídeo da correção",
+                                    visible: true,
+                                    closeModal: true
                                 }
-                            });
+                            }
+                        }).then((willConfirm) => {
+                            if (willConfirm) {
+                                // Quando o usuário clicar no botão "Ver vídeo da correção"
+                                window.location.href = correcao.variavel;
+                            } else {
+                                // Quando o usuário clicar no botão "Fechar"
+                                window.location.href = "selecionarEx.php";
+                            }
+                        });
                     },
                     error: function(xhr, status, error) {
-                        console.error(xhr.responseText); // Log de erro no console
+                        console.error(xhr.responseText);
                     }
                 });
-
             }
 
+            mostrarButton.hidden = true;
+            updiv.style.display = 'none';
             nextButton.style.display = 'none';
         }
 
-        // Iniciar carregamento das questões
         loadQuestions();
     </script>
 </body>
