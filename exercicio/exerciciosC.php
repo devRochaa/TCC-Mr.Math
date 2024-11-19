@@ -280,6 +280,7 @@
                 swal('Você completou o questionário!');
                 const email = "<?php echo $_SESSION['usuario']; ?>";
                 const ex_feitos = currentQuestionIndex;
+                console.log(score);
 
                 $.ajax({
                     type: 'POST',

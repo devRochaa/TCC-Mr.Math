@@ -22,6 +22,13 @@
     $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
     $result = mysqli_query($conexao, $sql);
   }
+  if (isset($_GET['id_materia'])) {
+    $id_materia = $_GET['id_materia'];
+
+    $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
+    $result = mysqli_query($conexao, $sql);
+  }
+
   $videos = [];
 
   while ($row = $result->fetch_assoc()) {
@@ -79,21 +86,51 @@
 
       trocarvideo(); // Chama a função para adicionar os event listeners
 
-      $("#assistida").click(function() {
-        const email = "<?php echo $_SESSION['usuario']; ?>";
-        $.ajax({
-          type: 'POST',
-          url: 'updateVideo.php', // O arquivo PHP que processa a atualização
-          data: {
-            assistido: 1,
-            email: email
-          },
-          success: function(response) {
+      // Função para gerenciar cookies
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+      }
 
-          },
-          error: function(xhr, status, error) {
-            console.error(xhr.responseText); // Log de erro no console
-          }
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+
+      $(document).ready(function() {
+        const email = "<?php echo $_SESSION['usuario']; ?>";
+
+        // Recupera o estado do checkbox do cookie
+        const assistidaCookie = getCookie(`assistida_${email}`);
+        if (assistidaCookie === "true") {
+          $("#assistida").prop("checked", true);
+        }
+
+        // Evento de clique no checkbox
+        $("#assistida").change(function() {
+          const isChecked = $(this).is(":checked");
+
+          // Atualiza o cookie
+          setCookie(`assistida_${email}`, isChecked, 30);
+
+          // Faz a requisição AJAX para atualizar a tabela
+          $.ajax({
+            type: 'POST',
+            url: 'updateVideo.php',
+            data: {
+              assistido: isChecked ? 1 : -1, // Envia 1 para adicionar, -1 para remover
+              email: email
+            },
+            success: function(response) {
+              console.log("Atualização no banco realizada com sucesso.");
+            },
+            error: function(xhr, status, error) {
+              console.error("Erro ao atualizar o banco:", xhr.responseText);
+            }
+          });
         });
       });
     </script>

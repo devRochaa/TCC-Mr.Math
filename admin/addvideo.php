@@ -54,6 +54,10 @@
       <input type="text" name="link" minlength="30" maxlength="43" required>
       <br>
       <br>
+      <label for="thumb_video" class="label-addex">Thumb do vídeo:</label>
+      <input type="file" id="thumb_video" name="thumb_video" accept="image/jpeg, image/png">
+      <br>
+      <br>
       <button type="submit" name="enviar">Envie o vídeo</button>
     </form>
   </center>

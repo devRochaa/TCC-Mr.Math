@@ -1,118 +1,176 @@
-
 * {
-	font-family: 'Poppins', sans-serif;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
 }
+
 body {
-	background-color: #ffffff;
+  background-color: #f9f9f9;
+  color: #333;
 }
+
 .container {
-	max-width: 80%;
-	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	gap: 20px;
-	margin-top: 2vh;
+  max-width: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 2vh;
 }
 
-#iframe{
-	height: 60vh;
-	width: 60vw;
+#iframe {
+  height: 60vh;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .main-video-container {
-	flex: 1 1 700px;
-	background-color: #fff;
-	
-}
-.main-video {
-	margin-bottom: 7px;
-	width: 100%;
-}
-.main-vid-title {
-	font-size: 20px;
-	color: #444;
+  flex: 1 1 700px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.main-video-content video {
-    width: 600px;
-    z-index: -1;
+.main-vid-title {
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+#main-description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
 }
 
 .video-list-container {
-	flex: 1 1 300px;
-	border-left: 2px solid #eee;
-	background-color: #fff;
-	cursor: pointer;
-	padding: 15px 15px 15px 35px;
+  flex: 1 1 300px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
+.video-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.video-list-container::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 3px;
+}
+
+.video-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
 
 .list {
-	display: flex;
-	align-items: center;
-	gap: 15px;
-	padding: 10px;
-	border: 1px solid #eee;
-	cursor: pointer;
-	border-radius: 5px;
-	margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-bottom: 1px solid #ddd; /* Traço entre os itens */
+  border-radius: 10px 10px 0 0; /* Apenas bordas arredondadas no topo */
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .list:last-child {
-	margin-bottom: 0;
+  border-bottom: none; /* Remove o traço do último item */
 }
+
+
+.list:hover {
+  background-color: #ffcc00;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .list.active {
-	background-color: #ffcc00;
+  background-color: #ffcc00;
+  color: #ffffff;
 }
+
 .container .video-list-container .list.active .list-title {
-	color: #fff;
+  color: #ffffff;
 }
+
 .list-video {
-	width: 100px;
-	border-radius: 5px;
+  width: 100px;
+  height: 60px;
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .list-title {
-	font-size: 17px;
-	color: #444;
+  font-size: 16px;
+  color: #444;
+  font-weight: 500;
 }
 
-
-@media (max-width:1200px) {
-	
-	#iframe{
-		height: 60vh;
-		width: 65vw;
-	}
-}
-@media (max-width:450px) {
-	.video-list-container{
-		border: none !important;
-		padding: 15px !important;
-	}
-	.main-vid-title {
-		font-size: 15px;
-		text-align: center;
-	}
-	.list {
-		flex-flow: column;
-		gap: 10px;
-	}
-	.list-video {
-		width: 100%;
-	}
-	.list-title {
-		font-size: 15px;
-		text-align: center;
-	}
-	#iframe{
-		height: 30vh;
-		width: 80vw;
-	}
-	#main-description{
-		font-size: 10px;
-	}
+@media (max-width: 1200px) {
+  #iframe {
+    height: 50vh;
+    width: 100%;
+  }
 }
 
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-list-container {
+    flex: unset;
+    max-width: 100%;
+    border: none;
+    box-shadow: none;
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  #iframe {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 450px) {
+  .main-vid-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .list {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .list-video {
+    width: 100%;
+    height: auto;
+  }
+
+  .list-title {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  #iframe {
+    height: 30vh;
+    width: 100%;
+  }
+
+  #main-description {
+    font-size: 14px;
+  }
+}
