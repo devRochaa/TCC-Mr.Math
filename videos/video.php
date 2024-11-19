@@ -19,13 +19,13 @@
   if (isset($_POST['enviar'])) {
     $id_materia = $_POST['id_materia'];
 
-    $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
+    $sql = "SELECT id, nome_video, link, descricao, thumb_video from videos where id_materia = $id_materia";
     $result = mysqli_query($conexao, $sql);
   }
   if (isset($_GET['id_materia'])) {
     $id_materia = $_GET['id_materia'];
 
-    $sql = "SELECT id, nome_video, link, descricao from videos where id_materia = $id_materia";
+    $sql = "SELECT id, nome_video, link, descricao, thumb_video from videos where id_materia = $id_materia";
     $result = mysqli_query($conexao, $sql);
   }
 
@@ -35,7 +35,8 @@
     $videos[] = [
       'titulo' => $row['nome_video'],
       'link' => $row['link'],
-      'descricao' => $row['descricao']
+      'descricao' => $row['descricao'],
+      'thumb_video' => $row['thumb_video']
     ];
   }
   ?>
@@ -52,7 +53,11 @@
       <div class="video-list-container" id="videosList">
         <?php foreach ($videos as $video) { ?>
           <a id="<?php echo $video['link']; ?>" class='thumb' data-title="<?php echo $video['titulo']; ?>" data-description="<?php echo $video['descricao']; ?>">
-            <img height='90vw' src='../img/banner7.png'>
+            <img height='100vw' width="200vw" src='<?php if ($video['thumb_video']) {
+                                                      echo $video['thumb_video'];
+                                                    } else {
+                                                      echo '../img/banner7.png';
+                                                    } ?>'>
             <p><?php echo $video['titulo']; ?></p>
           </a>
         <?php } ?>
