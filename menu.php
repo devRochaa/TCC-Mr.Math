@@ -1,7 +1,6 @@
 <?php
 ob_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,36 +10,35 @@ ob_start();
     <title>Menu Burguer</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/menu.css?=<?php echo time(); ?>">
 </head>
-
 
 <body>
     <?php
-    session_start();
-    if (!isset($_SESSION["usuario"])) {
-        header("location: index.html");
-        exit();
-    }
-    include("conexao.php");
+    include("navbarH.php");
+
 
     $logado = $_SESSION["usuario"];
+    $nome = $_SESSION['nome'];
 
-    $sql = "SELECT nome FROM usuarios WHERE email = '$logado'";
-    $con = mysqli_query($conexao, $sql);
-    if ($con->num_rows > 0) {
-        // Saída de dados de cada linha
-        while ($row = $con->fetch_assoc()) {
-            $nome = $row["nome"];
-        }
-    }
-    $_SESSION['nome'] = $nome;
+
 
     $sql = "SELECT id from usuarios where email = '$logado'";
     $result = $conexao->query($sql);
     while ($row = $result->fetch_assoc()) {
-        $id = $row['id'];
+        $id = $row['id'];                                           //ID
+        $_SESSION['id'] = $id;
     }
+
+    $sql = "SELECT data from calendario where id_usuario = '$id'";
+    $result = $conexao->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        if (date("Y-m-d") == $row['data']) {
+            echo 'é hoje';
+        }
+    }
+
+
 
     $sql = "SELECT aulas_assistidas, ex_feitos FROM desempenho where id_usuarios = $id";
     $result = $conexao->query($sql);
@@ -48,7 +46,14 @@ ob_start();
         $aulas_assistidas = $row['aulas_assistidas'];
         $ex_feitos = $row['ex_feitos'];
     }
-    include("navbarH.php")
+
+    $sql = "SELECT id from videos";
+    $resultado = mysqli_query($conexao, $sql);
+    $qtd_videos = mysqli_affected_rows($conexao);
+
+    $sql = "SELECT id from exercicios";
+    $resultado = mysqli_query($conexao, $sql);
+    $qtd_exercicios = mysqli_affected_rows($conexao);
 
     ?>
 
@@ -61,7 +66,7 @@ ob_start();
             </div>
             <div class="box-aulas">
                 <div class="barra-aulas">
-                    <h2>Matematica Basica</h2>
+                    <h2>Aulas Assisitidas</h2>
                     <div id="porcentagem-aula">
                         <h3 id="porcentagem-aula-text"></h3>
                     </div>
@@ -69,23 +74,40 @@ ob_start();
             </div>
             <div class="box-questoes">
                 <div class="barra-questoes">
-                    <h2>Matematica Basica</h2>
+                    <h2>Questões Feitas</h2>
                     <div id="porcentagem-questoes">
                         <h3 id="porcentagem-questoes-text"></h3>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="central-container">
+            <div class="central-div">
+                <h2>Div Centralizada</h2>
+                <p>Esta é uma div estilizada, com fundo branco, sombra e bordas arredondadas.</p>
+            </div>
+        </div>
     </div>
+    <?php
 
-
+    ?>
 
     <script>
         var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
         var ex_feitos = "<?php echo $ex_feitos; ?>";
+        var total_aulas = "<?php echo $qtd_videos; ?> ";
+        var total_ex = "<?php echo $qtd_exercicios; ?>";
 
-        var aulas_porcentagem = (aulas_assistidas / 10) * 100;
-        var ex_porcentagem = (ex_feitos / 50) * 100;
+
+        var aulas_porcentagem = (aulas_assistidas / total_aulas) * 100;
+        if (aulas_porcentagem > 100) {
+            aulas_porcentagem = 100;
+        }
+        var ex_porcentagem = (ex_feitos / total_ex) * 100;
+        if (ex_porcentagem > 100) {
+            ex_porcentagem = 100;
+        }
 
         function atualizarBarra(percentualA, percentualQ) {
             var barraProgressoAula = document.getElementById("porcentagem-aula");
@@ -94,13 +116,11 @@ ob_start();
             var textoPorcentagemQuestoes = document.getElementById("porcentagem-questoes-text");
 
             barraProgressoAula.style.width = percentualA + "%";
-            textoPorcentagemAula.innerText = percentualA + "%";
+            textoPorcentagemAula.innerText = Math.pow(parseInt(percentualA), 1) + "%";
             barraProgressoQuestoes.style.width = percentualQ + "%";
-            textoPorcentagemQuestoes.innerText = percentualQ + "%";
+            textoPorcentagemQuestoes.innerText = Math.pow(parseInt(percentualQ), 1) + "%";
         }
         atualizarBarra(aulas_porcentagem, ex_porcentagem);
-
-        // Exemplo de uso: Atualizar a barra para 70%
     </script>
 </body>
 

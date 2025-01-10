@@ -1,0 +1,139 @@
+.container{
+    width: 100%;
+    height: auto;
+}
+
+.corpo{
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+}
+
+.ex {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button {
+    cursor: pointer;
+}
+
+.question-containerr {
+    margin: 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.question {
+    font-size: 15px;
+    font-weight: bold;
+    align-items: center;
+}
+
+
+.answers-containerr {
+    width: 100%;
+    display: grid;
+    grid-template-columns:  1fr;
+    gap: 16px;
+}
+
+.next-quiz button {
+    margin-top: 32px;
+}
+
+.button {
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #fff;
+    border: 3px solid #070f7e;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:not(:disabled):hover{
+    background-color: #ffce00;
+    border-color: #1a2b9e;
+    color: #143699;
+}
+
+
+.answer:disabled {
+    cursor: not-allowed ;
+}
+
+.controls-start {
+    display: flex;
+}
+
+.controls-next {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
+
+.final-message {
+    font-size: 20px;
+    text-align: center;
+}
+
+.final-message span {
+    display: block;
+    margin-top: 8px;
+}
+
+.cards {
+    display: flex;
+    gap: 2rem;
+}
+
+.features{
+    margin-top: 4rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.features .card {
+    background-color: #1a2b9e;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+
+
+.features .card h4 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.features .card p {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.features .card a {
+    color: #fff;
+    transition: all 0.3s ease;
+}

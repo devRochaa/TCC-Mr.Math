@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION["nome"])) {
+if (!isset($_SESSION["usuario"])) {
   header("Location: ../index.html");
   exit();
 } else {
   include("conexao.php");
-  $nome = $_SESSION["nome"];
+  $nome = $_SESSION['nome'];
 }

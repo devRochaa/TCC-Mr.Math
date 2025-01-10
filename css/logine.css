@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,100&display=swap');
+
+body{
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: -5vw;
+  font-size: 3em;
+}
+
+.mrmath {
+  margin: 0;
+  margin-top: -4vw;
+  background-color: #ffffff;
+  border-radius: 0.75vw;
+  padding: 1vh;
+  font-size: 3vw;
+  color: #0B1555;
+  -webkit-text-stroke: 0.3vh #0B1555;
+  text-transform: uppercase;
+}
+
+.poppins-boldd {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3em;
+}
+
+
+body * {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.main-login{
+  width: 110vw;
+  height: 100vh;
+  background: #d5e5ff;
+  display: flex;
+}
+
+.left-login{
+  background-color: #143699;
+  border-radius: 0 3vh 3vh 0;
+  width: 53vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 0 5px 10px#1e39e58f ;
+}
+
+.left-login > h1{
+  padding: 1vw 0;
+  font-weight: 600;
+  font-size: 3vw;
+  color: #ffffff;
+}
+
+
+
+.left-login-image{
+  width: 35vw;
+}
+
+
+.btn-login{
+  appearance: none;
+  background-color: #143699;
+  border: 0.125em solid #143699;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 10px;
+  min-height: 3.75em;
+  min-width: 0;
+  outline: none;
+  padding: 1em 7em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+ }
+ 
+ .btn-login:disabled {
+  pointer-events: none;
+ }
+ 
+ .btn-login:hover {
+  color: #b3b3b3;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+ }
+ 
+ .btn-login:active {
+  box-shadow: none;
+  transform: translateY(0);
+ }
+
+ .jatenho {
+  color: #EFF5FF;
+ }
+
+.right-login {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #0b1555;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #143699;
+}
+
+.card-login > h1 {
+  color: #eff5ff;
+  font-weight: 800;
+  margin: 0;
+}
+
+.textfield {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.textfield > input{
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  padding: 1vw;
+  background: #58719b;
+  color: #f0ffffde;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.textfield > label {
+  color: #f0ffffde;
+  margin-bottom: 10px;
+}
+
+.textfield > input::placeholder {
+  color: #eff5ff;
+}
+
+.btn-login {
+  appearance: none;
+  background-color: #143699;
+  border: 0.125em solid #143699;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 10px;
+  min-height: 3.75em;
+  min-width: 0;
+  outline: none;
+  padding: 1em 7em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+@media only screen and (max-width: 950px) {
+  .card-login {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .left-login > h1{
+    font-size: 5vw;
+  }
+
+  .mrmath{
+    font-size: 3vw;
+    font-weight: 300;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+
+  .main-login{
+    gap: 1rem;
+  }
+
+  .left-login > h1{
+    font-size: 35px;
+  }
+
+  .left-login{
+    background-color: #143699;
+    border-radius: 0 3vh 3vh 0;
+    width: 47vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 10px 0 5px 10px#1e39e58f ;
+  }
+
+  .card-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 65px;
+    background: #0b1555;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #143699;
+  }
+
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .main-login {
+    flex-direction: column;
+  }
+  .left-login > h1 {
+    display: none;
+  }
+
+  .right-login {
+    justify-content: flex-start ;
+    width: 101%;
+    height: auto;
+  }
+
+  .left-login {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-login-image {
+    width: 50vw;
+  }
+
+  .card-login {
+    width: 90%;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 420px) {
+
+}

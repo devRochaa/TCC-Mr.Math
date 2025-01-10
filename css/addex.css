@@ -1,0 +1,55 @@
+/* Estilo do container principal */
+.container-addex {
+  max-width: 900px;
+  margin: 100px auto 50px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do formulário */
+.form-addex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Rótulos dos inputs */
+.label-addex {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Inputs do formulário */
+.input-addex {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Botões */
+.button-addex,
+.button-addex-submit {
+  padding: 10px 15px;
+  background-color: #1E38E6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.button-addex:hover,
+.button-addex-submit:hover {
+  background-color: #143699;
+}
+
+.alternativas-container {
+  margin-top: 15px;
+}
+
+/* Navbar ajustada */
