@@ -16,7 +16,7 @@ ob_start();
 <body>
     <?php
     include("navbarH.php");
-
+    date_default_timezone_set('America/Sao_Paulo');
 
     $logado = $_SESSION["usuario"];
     $nome = $_SESSION['nome'];
@@ -30,16 +30,9 @@ ob_start();
         $_SESSION['id'] = $id;
     }
 
-    $sql = "SELECT data from calendario where id_usuario = '$id'";
-    $result = $conexao->query($sql);
-    while ($row = $result->fetch_assoc()) {
-        if (date("Y-m-d") == $row['data']) {
-            echo 'é hoje';
-        }
-    }
 
 
-
+    
     $sql = "SELECT aulas_assistidas, ex_feitos FROM desempenho where id_usuarios = $id";
     $result = $conexao->query($sql);
     while ($row = $result->fetch_assoc()) {
@@ -58,9 +51,22 @@ ob_start();
     ?>
 
     <div class="container">
+        <div class="notif">
+            <img src="img/notificacao.png" id="notif-button" class="notif_img" onclick="MostrarNotif()">
+            <?php 
+            $sql = "SELECT titulo, data from calendario where id_usuario = '$id'";
+            $result = $conexao->query($sql);
+             while ($row = $result->fetch_assoc()) {
+                if (date("Y-m-d") == $row['data']) {
+                    echo "<div id='bolinha' class='bolinhaNotif'>ㅤ</div>";
+                }
+            }
+            ?>
+        </div>
         <div class="corpo">
             <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
             <hr>
+           
             <div class="banner">
                 <img class="banner_img" src="img/banner_inicial.png">
             </div>
@@ -82,10 +88,23 @@ ob_start();
             </div>
         </div>
 
-        <div class="central-container">
+        <div id="centralC" class="central-container">
             <div class="central-div">
-                <h2>Div Centralizada</h2>
-                <p>Esta é uma div estilizada, com fundo branco, sombra e bordas arredondadas.</p>
+                <div class='fecharnotif'onclick="FecharNotif()"><i class="fa-regular fa-circle-xmark fa-2x"></i></div>
+                <?php
+                    $sql = "SELECT titulo, data from calendario where id_usuario = '$id'";
+                    $result = $conexao->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                    if (date("Y-m-d") == $row['data']) {
+                        echo '<p>Você tem uma atividade marcada para hoje:</p>';
+                        echo "<h3>" . $row['titulo'] ."</h3>";
+                        $tem = true;
+                    }
+                }
+                if (!$tem){
+                    echo '<p>Você não tem nenhuma atividade marcada para hoje.</p>';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -94,6 +113,12 @@ ob_start();
     ?>
 
     <script>
+      
+      if (sessionStorage.getItem("notif") === null) {
+    sessionStorage.setItem("notif", "0"); // Define como "0" apenas na primeira vez
+}
+
+
         var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
         var ex_feitos = "<?php echo $ex_feitos; ?>";
         var total_aulas = "<?php echo $qtd_videos; ?> ";
@@ -114,6 +139,8 @@ ob_start();
             var textoPorcentagemAula = document.getElementById("porcentagem-aula-text");
             var barraProgressoQuestoes = document.getElementById("porcentagem-questoes");
             var textoPorcentagemQuestoes = document.getElementById("porcentagem-questoes-text");
+            
+            
 
             barraProgressoAula.style.width = percentualA + "%";
             textoPorcentagemAula.innerText = Math.pow(parseInt(percentualA), 1) + "%";
@@ -121,6 +148,26 @@ ob_start();
             textoPorcentagemQuestoes.innerText = Math.pow(parseInt(percentualQ), 1) + "%";
         }
         atualizarBarra(aulas_porcentagem, ex_porcentagem);
+
+        const CentrarContainer = document.getElementById("centralC");
+        const bolinhaVer = document.getElementById("bolinha")
+        if (sessionStorage.getItem("notif") === "0") {
+    bolinhaVer.style.display = 'block'; // Mostra a bolinha se notif for "0"
+} else {
+    bolinhaVer.style.display = 'none'; // Esconde a bolinha caso contrário
+}
+        function MostrarNotif (){
+            
+            bolinhaVer.style.display = 'none'
+            sessionStorage.setItem("notif", "1");
+            CentrarContainer.style.display = 'block';
+
+        }
+
+        function FecharNotif(){
+            bolinhaVer.style.display = 'none'
+            CentrarContainer.style.display = 'none';
+        }
     </script>
 </body>
 

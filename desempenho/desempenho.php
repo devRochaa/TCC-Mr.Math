@@ -36,7 +36,7 @@ ob_start();
     <div class="corpo">
       <p class="desemp">DESEMPENHO</p>
       <hr>
-      <p>Olá <?php echo $nome ?>! Esse é a tela de início</p>
+      <p>Olá <?php echo $nome ?>! Esse é a tela de desempenho</p>
 
       <div class="progress">
         <div class="card">
@@ -45,7 +45,7 @@ ob_start();
         </div>
         <div class="card">
           <h4>Horas Estudadas</h4>
-          <p>2</p>
+          <p><?php echo $aulas_assistidas / 2; ?></p>
         </div>
         <div class="card">
           <h4>Atividades Realizadas</h4>
@@ -88,6 +88,7 @@ ob_start();
       var ex_feitos = "<?php echo $ex_feitos; ?>";
       var acertos = "<?php echo $acertos; ?>";
       var aulas_assistidas = "<?php echo $aulas_assistidas; ?>";
+      let horas_assistidas = "<?php echo $aulas_assistidas / 2 ?>"
       const ctx = document.getElementById('barchart');
 
       new Chart(ctx, {
@@ -96,7 +97,7 @@ ob_start();
           labels: ['Aulas Assistidas', 'Horas Assistidas', 'Atividades Realizadas', 'Acerto'],
           datasets: [{
             label: '# of Votes',
-            data: [aulas_assistidas, 2, ex_feitos, acertos],
+            data: [aulas_assistidas, horas_assistidas, ex_feitos, acertos],
             borderWidth: 1
           }]
         },

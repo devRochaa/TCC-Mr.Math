@@ -127,7 +127,7 @@ input:checked ~ .slide {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2px 14px 2px;
+    padding: 3px 15px 3px;
     width: 100%;
     background-color: #1E38E6;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -139,6 +139,9 @@ input:checked ~ .slide {
     width: auto;
     margin-top: 5px;
 }
+
+
+
 
 #link {
     margin-top: -5px;
@@ -154,6 +157,9 @@ input:checked ~ .slide {
         'opsz' 48;
         
 }
+
+
+
 
 @media (max-width: 768px) {
     .navbar {       

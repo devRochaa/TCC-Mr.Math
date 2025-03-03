@@ -13,13 +13,30 @@ body {
 
 
 .central-div {
-    width: 50%; /* Aumente a largura para 50% */
-    background-color: #ededed;
-    box-shadow: 10px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    padding: 30px; /* Aumenta o padding para dar mais espaço ao conteúdo */
+    position: fixed;
+    padding: 10px;
+    top: 10%; /* Define a posição fixa do updiv, 10% da altura da tela */
+    left: 85%;
+    transform: translateX(-50%);
+    width: 20vw;  /* Largura fixa */
+    height: 20vh; /* Altura fixa */
+    background-color: #334eff;
     text-align: center;
-    margin-top: 20px; /* Adiciona espaço entre os elementos anteriores */
+    color: #fff;
+    border-radius: 3vh;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Garante que o updiv fique acima de outros elementos */
+    /* Inicia oculto */
+    animation: aparecer 1s forwards; /* Aplica a animação quando for mostrado */
+}
+
+@keyframes aparecer {
+    0% {
+        top: -100%; /* Começa fora da tela */
+    }
+    100% {
+        top: 10%; /* Chega até 10% da altura da tela, abaixo da navbar */
+    }
 }
 
 .container {
@@ -184,6 +201,15 @@ input:checked ~ .slide {
         width: 80%;
         height: auto;
         margin: 20px auto;
+    }
+
+    .notif_img {
+        position: absolute;
+        height: 2rem;
+        margin-left: 45%;
+        cursor: pointer;
+        width: auto;
+        margin-top: 1rem;
     }
     
     .box-aulas{
@@ -353,4 +379,28 @@ input:checked ~ .slide {
             width: 25px;
         }
     }
+}
+.central-container{
     
+    display: none;
+}
+
+.fecharnotif{
+    cursor: pointer;
+    margin-bottom: 1rem;
+
+}
+
+.bolinhaNotif{
+    background-color: red;
+    border-radius:100%;
+    width: 15px;
+    height: auto;
+    font-size: 9px;
+    position: absolute;
+    z-index: 3;
+    margin-top: 1.8%;
+    margin-left: 44.8%;
+}
+
+

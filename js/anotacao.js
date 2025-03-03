@@ -18,10 +18,10 @@ function adicionarNovaNota(texto = '') {
     nota.innerHTML = `
         <div class="configuracao">
             <button class="editar">
-                <i class="fas fa-edit" ></i>
+                <i class="fas fa-check" ></i>
             </button>
             <button class="confirmar hidden">
-                <i class="fa-solid fa-check"></i>
+                <i class="fa-solid fa-edit"></i>
             </button>
             <button class="deletar">
                 <i class="fas fa-trash-alt"></i>

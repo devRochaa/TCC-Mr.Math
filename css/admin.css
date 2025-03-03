@@ -1,0 +1,121 @@
+.user-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .user-list li {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: white;
+    border: 1px solid #1E38E6;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+  }
+
+  .user-list li:hover {
+    background-color: #e6f0ff;
+  }
+
+  .user-list h2 {
+    color: #1E38E6;
+    margin-bottom: 10px;
+  }
+
+  .user-list p {
+    color: #555;
+    margin: 5px 0;
+  }
+
+  .user-list button {
+    padding: 10px;
+    background-color: #143699;
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    transition: ease 0.3s;
+  }
+
+  .user-list button:hover {
+    background-color: transparent;
+    border: 2px solid #143699;
+    color: #143699;
+  }
+
+  .user-list button:active {
+    transform: translateY(0.5vh)
+  }
+
+  strong {
+    color: #1E38E6;
+  }
+
+  .btn-video {
+    font-size: 12px;
+    display: flex;
+    background-color: #143699;
+    border: 2px solid #143699;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 45%;
+    margin-bottom: 1rem;
+  }
+  .btn-ex {
+    font-size: 12px;
+    display: flex;
+    background-color: #143699;
+    border: 2px solid #143699;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 45%;
+    margin-bottom: 1rem;
+  }
+  .btn-mate {
+    font-size: 12px;
+    display: flex;
+    background-color: #143699;
+    border: 2px solid #143699;
+    border-radius: 10px;
+    padding: 0.75rem;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 45%;
+    margin-bottom: 1rem;
+  }
+
+  .btn-video:hover {
+    background-color: transparent;
+    border: 2px solid #143699;
+    color: #143699;
+  }
+
+  .btn-mate:hover {
+    background-color: transparent;
+    border: 2px solid #143699;
+    color: #143699;
+  }
+
+  .btn-ex:hover {
+    background-color: transparent;
+    border: 2px solid #143699;
+    color: #143699;
+  }
+
+  .div-botao {
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+  }

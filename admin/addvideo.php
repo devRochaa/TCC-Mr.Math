@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adicionar Vídeos</title>
+  <link rel="stylesheet" href="../css/addvideo.css?=<?php echo time(); ?>">
   <link rel="stylesheet" href="../css/navbar.css?=<?php echo time(); ?>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,6 +28,7 @@
 
   ?>
   <center>
+  <div class="container-addvideo">
     <form action="videoprocess.php" method="POST" enctype="multipart/form-data">
 
       <label for="materia">Matéria:</label>
@@ -42,24 +44,25 @@
 
       <br>
       <br>
-      <label for="nomev">Nome do vídeo:</label>
-      <input type="text" name="nomev" maxlength="100" placeholder="Aula de Fração..." required>
+      <label for="nomev" class="label-addvideo">Nome do vídeo:</label>
+      <input type="text" name="nomev" class="input-addvideo" maxlength="100" placeholder="Aula de Fração..." required>
       <br>
       <br>
-      <label for="descricao">Descrição:</label>
-      <input type="text" name="descricao" maxlength="200" placeholder="matemática...">
+      <label for="descricao" class="label-addvideo">Descrição:</label>
+      <input type="text" name="descricao" class="input-addvideo" maxlength="200" placeholder="matemática...">
       <br>
       <br>
-      <label for="link">Envie o vídeo:</label>
-      <input type="text" name="link" minlength="30" maxlength="43" required>
+      <label for="link" class="label-addvideo">Envie o vídeo:</label>
+      <input type="text" name="link" class="input-addvideo" minlength="30" maxlength="43" required>
       <br>
       <br>
-      <label for="thumb_video" class="label-addex">Thumb do vídeo:</label>
+      <label for="thumb_video"  class="label-addvideo">Thumb do vídeo:</label>
       <input type="file" id="thumb_video" name="thumb_video" accept="image/jpeg, image/png">
       <br>
       <br>
-      <button type="submit" name="enviar">Envie o vídeo</button>
+      <button type="submit" class="button-addex-submit" name="enviar">Envie o vídeo</button>
     </form>
+  </div>
   </center>
 </body>
 
