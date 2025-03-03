@@ -48,7 +48,7 @@ Clone este projeto:
   http://localhost/mr-math
 ```
 
-
+obs: Para o cadastro você deve definir um e-mail em cadastro/envia_email.php para enviar os codigos de verificação.
 
 
 ## Autores
