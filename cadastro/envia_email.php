@@ -21,7 +21,7 @@ try {
   $mail->SMTPSecure = "tls";
   $mail->SMTPAuth = true;
   $mail->Username = "mr.mathofc@gmail.com";
-  $mail->Password = "pcon rtbf ixoe wepq";
+  $mail->Password = " SUA SENHA DE ACESSO POR SEGUNDOS";
 
   // Remetente e destinatário
   $mail->setFrom($mail->Username, 'Mr.Math');
