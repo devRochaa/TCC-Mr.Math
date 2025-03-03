@@ -3,6 +3,8 @@
 
 O Mr.Math é uma plataforma web desenvolvida para auxiliar no aprendizado de matemática básica, oferecendo videoaulas, exercícios e ferramentas interativas para alunos e professores.
 
+https://github.com/user-attachments/assets/72bea280-1b45-4a27-b3f4-e02849f25928
+
 ## 📌 Funcionalidades
 
 **Para Alunos** 
