@@ -53,13 +53,13 @@ obs: Para o cadastro você deve definir um e-mail em cadastro/envia_email.php pa
 
 ## Autores
 
-- [@Daniel Rocha](https://www.github.com/devRochaa)
-- [@Pedro Paraizo](https://www.github.com/ParadiseHub)
-- [@Mauricio](https://www.github.com/MauricioPDSJ)
-- [@Pedro Pioto](https://www.github.com/PedroHPZanutto)
-- [@Guilherme](https://www.github.com/Guilherme-RR)
-- [@Pedro Moraes](https://www.github.com/PedroMoraesAmarins)
-- [@Ricardo](https://www.github.com/akaricardinho)
+- [@Daniel Rocha](https://www.github.com/devRochaa) Programador
+- [@Pedro Paraizo](https://www.github.com/ParadiseHub) Programador
+- [@Mauricio](https://www.github.com/MauricioPDSJ) Design
+- [@Pedro Pioto](https://www.github.com/PedroHPZanutto) Design
+- [@Guilherme](https://www.github.com/Guilherme-RR) Documentação
+- [@Pedro Moraes](https://www.github.com/PedroMoraesAmarins) Documentação
+- [@Ricardo](https://www.github.com/akaricardinho) Programador
 
 ## 📄 Licença
 
